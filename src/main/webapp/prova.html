@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="it" ng-app="schedaRilasci">
+
+<body ng-app="schedaRilasci" ng-controller="stato">
+
+
+	<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+		<button class="navbar-toggler navbar-toggler-right" type="button"
+			data-toggle="collapse" data-target="#navbarNavDropdown"
+			aria-controls="navbarNavDropdown" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="container">
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item active"><a class="nav-link"
+						href="#!/primapagina">Graphs</a></li>
+				</ul>
+			</div>
+		</div>
+		<a href="#!/batchManager" class="btn btn-info btn-sm"> <span
+			class="glyphicon glyphicon-th-list"></span> Switch to backend
+		</a>
+	</nav>
+
+	<br>
+
+	<button id="release">Info Time Release</button>
+	<button id="releaseIt">Info Time Release IT</button>
+
+
+	<div id="releaseDiv" style="display:block !important">
+
+		<div class="card">
+			<h3 class="card-header">Info Time Release</h3>
+			<div class="card-block">
+				<form>
+					<div class="form-group">
+						<label for="formGroupExampleInput">Release:</label> <input
+							type="text" class="form-control" id="formGroupExampleInput"
+							placeholder="Insert id Polarion release" ng-model="idPolarion">
+					</div>
+					<div class="form-group">
+						<label for="exampleSelect1">Status</label> <select
+							class="form-control" id="exampleSelect1" ng-model="idStato">
+							<option value="in_integrazione">In Integrazione</option>
+							<option value="quickfix">Quickfix</option>
+						</select>
+					</div>
+					<button type="button" class="btn btn-secondary"
+						title="Viene stoppato lo scheduler"
+						style="margin-left: calc(50% - 50px); width: 100px;"
+						ng-click="submitRelease(idPolarion,idStato)">Find</button>
+				</form>
+
+			</div>
+		</div>
+		<br>
+		<h5>
+			<span class="label label-default">{{time[0]}}</span>
+		</h5>
+		<br>
+
+		<div class="card">
+
+
+			<h3 class="card-header">Date result</h3>
+			<div class="card-block" style="overflow-x: auto;"
+				ng-controller="stato">
+				<table class="table">
+					<thead>
+
+					</thead>
+					<tbody>
+						<tr ng-repeat="i in time.slice(1,time.length)">
+							<th>{{i}}</th>
+
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+
+	<div id="releaseItDiv" style="display:none !important">
+
+		<div class="card">
+			<h3 class="card-header">Info Time Release IT</h3>
+			<div class="card-block">
+				<form>
+					<div class="form-group">
+						<label for="formGroupExampleInput">Release IT:</label> <input
+							type="text" class="form-control" id="formGroupExampleInput"
+							placeholder="Insert id Polarion release" ng-model="idPolarion">
+					</div>
+					<div class="form-group">
+						<label for="exampleSelect1">Status</label> <select
+							class="form-control" id="exampleSelect1" ng-model="idStato">
+							<option value="in_integrazione">In Integrazione</option>
+							<option value="sospeso">Sospeso</option>
+						</select>
+					</div>
+					<button type="button" class="btn btn-secondary"
+						title="Viene stoppato lo scheduler"
+						style="margin-left: calc(50% - 50px); width: 100px;"
+						ng-click="submitReleaseIt(idPolarion,idStato)">Find</button>
+				</form>
+
+			</div>
+		</div>
+		<br>
+		<h5>
+			<span class="label label-default">{{time[0]}}</span>
+		</h5>
+		<br>
+
+		<div class="card">
+
+
+			<h3 class="card-header">Date result</h3>
+			<div class="card-block" style="overflow-x: auto;"
+				ng-controller="stato">
+				<table class="table">
+					<thead>
+
+					</thead>
+					<tbody>
+						<tr ng-repeat="i in time.slice(1,time.length)">
+							<th>{{i}}</th>
+
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="csv">
+<head>
+  <title>Dati Generali</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <script src="angular/angular.js"></script>
+<script src="angular/angular-route.js"></script>
+<script src="jquery/jquery-3.2.1.js"></script>
+  <link href="css/footer.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/SchedaRilasci/css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script src="javascript/csvController.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Scheda Rilasci</a>
+    </div>
+    <ul class="nav navbar-nav">
+    <!-- <li><a href="DatiGenerici.html">Dati generici</a></li> -->
+       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Dati generali <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="datiGenerali_GeneraReport.html">Genera Report</a></li>
+          <li><a href="datiGenerali_VisualizzaGrafici.html">Visualizza Grafici</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Dati specifici <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="datiSpecifici_GeneraReport.html">Genera Report</a></li>
+          <li><a href="datiSpecifici_VisualizzaGrafici.html">Visualizza Grafici</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Dati per ruolo <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="datiPerRuolo_GeneraReport.html">Genera Report</a></li>
+          <li><a href="datiPerRuolo_VisualizzaGrafici.html">Visualizza Grafici</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="storico_csv.html"><span class="glyphicon glyphicon-user"></span> Back Office</a></li>
+      <li><a href="index.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+  <!--  <div ng-controller="controllerCsv">
+			<span ng-model="csv">{{csv[7].id}}</span>
+<p></p>
+		</div>-->
+<div class="container">
+  <div id = "tabella">
+  <h2>Tabella con i dati dei rilasci</h2>
+ <!--  <p>Tabella risultati prova</p> -->            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id Rilascio</th>
+        <th>Titolo</th>
+        <th>Progetto</th>
+        <th>Contesto</th>
+        <th>Stato</th>
+        <th>Azioni</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>IT-PROVA-6789</td>
+        <td>Prova Titolo Rilascio Integrazione Tecnica</td>
+        <td>IT-PROVA</td>
+        <td>Contesto</td>
+        <td>In Integrazione</td>
+        <td>
+        <div class="icon">
+        <a href="#">
+          <span class="glyphicon glyphicon-open-file"></span>
+        </a></div>
+        <div class="icon">
+        <a href="#">
+          <span class="glyphicon glyphicon-download-alt"></span>
+        </a>
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td>IT-PROVA-6789</td>
+        <td>Prova Titolo Rilascio Integrazione Tecnica</td>
+        <td>IT-PROVA</td>
+        <td>Contesto</td>
+        <td>In Integrazione</td>
+        <td>
+        <div class="icon">
+        <a href="#">
+          <span class="glyphicon glyphicon-open-file"></span>
+        </a></div>
+        <div class="icon">
+        <a href="#">
+          <span class="glyphicon glyphicon-download-alt"></span>
+        </a>
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td>IT-PROVA-6789</td>
+        <td>Prova Titolo Rilascio Integrazione Tecnica</td>
+        <td>IT-PROVA</td>
+        <td>Contesto</td>
+        <td>In Integrazione</td>
+        <td>
+        <div class="icon">
+        <a href="#">
+          <span class="glyphicon glyphicon-open-file"></span>
+        </a></div>
+        <div class="icon">
+        <a href="#">
+          <span class="glyphicon glyphicon-download-alt"></span>
+        </a>
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td>IT-PROVA-6789</td>
+        <td>Prova Titolo Rilascio Integrazione Tecnica</td>
+        <td>IT-PROVA</td>
+        <td>Contesto</td>
+        <td>In Integrazione</td>
+        <td>
+        <div class="icon">
+        <a href="#">
+          <span class="glyphicon glyphicon-open-file"></span>
+        </a></div>
+        <div class="icon">
+        <a href="#">
+          <span class="glyphicon glyphicon-download-alt"></span>
+        </a>
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td>IT-PROVA-6789</td>
+        <td>Prova Titolo Rilascio Integrazione Tecnica</td>
+        <td>IT-PROVA</td>
+        <td>Contesto</td>
+        <td>In Integrazione</td>
+        <td>
+        <div class="icon">
+        <a href="#">
+          <span class="glyphicon glyphicon-open-file"></span>
+        </a></div>
+        <div class="icon">
+        <a href="#">
+          <span class="glyphicon glyphicon-download-alt"></span>
+        </a>
+        </div>
+        </td>
+      </tr>
+    <table>
+  <tbody ng-controller="controllerCsv" ng-repeat="i in csv">
+    <tr><td>{{i.name}}</td><td>{{$index}}</td></tr>
+    <tr ng-repeat="e in i.details">
+       <td>{{$index}}</td>
+       <td>{{e.foo}}</td>
+       <td>{{e.bar}}</td></tr>
+  </tbody>
+</table>
+   
+      
+    
+    
+  
+    </tbody>
+  </table>
+  </div>
+</div>
+
+
+</body>
+</html>
