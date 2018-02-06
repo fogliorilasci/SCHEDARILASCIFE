@@ -1,0 +1,525 @@
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+	<div class="container">
+		<a class="navbar-brand" href="#!/">Scheda Rilasci</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item ">
+					<a class="nav-link" href="#!/">Home</a>
+				</li>
+				<li class="nav-item ">
+					<a class="nav-link" href="#!/stato">Release status</a>
+				</li>
+				<li class="nav-item ">
+					<a class="nav-link" href="#!/infoReleaseProgetto">Info Release</a>
+				</li>
+				<li class="nav-item ">
+					<a class="nav-link" href="#!/infoReleaseIT">Info ReleaseIT</a>
+				</li>
+			</ul>
+			<a href="#!/batchManager" class="btn btn-info btn-sm"> 
+				<span class="fa fa-window-restore" aria-hidden="true"></span> Switch to backend
+			</a> 
+			<a class="navbar-brand nav-link" href="#!/logout"><span class="fa fa-power-off" aria-hidden="true"></span> Logout</a>
+		</div>
+	</div>
+</nav>
+
+	<br>
+
+
+	<br>
+
+<div class="col-md-10 col-lg-10 col-sm-8 offset-md-1">
+	<div id="releaseDiv" style="display: block !important">
+		<div class="card">
+			<h3 class="card-header">Info Release IT</h3>
+			<div class="card-block">
+				<form>
+					<div class="form-group">
+						<label for="formGroupExampleInput">Release:</label> <input
+							type="text" class="form-control" id="formGroupExampleInput"
+							placeholder="Insert id Polarion release" ng-model="idPolarion">
+					</div>
+					<button type="button" class="btn btn-secondary"
+						title="Viene stoppato lo scheduler"
+						style="margin-left: calc(50% - 50px); width: 100px;"
+						ng-click="submitRelease(idPolarion,idStato)">Find</button>
+				</form>
+
+			</div>
+		</div>
+		</div>
+		<br> <br>
+		<!-- GENERAL INFO -->
+
+
+		<div class="card">
+			<h3 class="card-header">General Info</h3>
+			<div class="card-block" style="overflow-x: auto;"
+				ng-controller="stato">
+				<table class="table table-striped">
+
+					<tbody>
+						<tr>
+							<th scope="row">
+							<td>Progetto Polarion:</td>
+							<td>Data Inizio:</td>
+						</tr>
+						<tr>
+							<th scope="row">
+							<td>Repo:</td>
+							<td>Data Fine</td>
+						</tr>
+						<tr>
+							<th scope="row">
+							<td>Titolo:</td>
+							<td>Data Creazione:</td>
+						</tr>
+						<tr>
+							<th scope="row">
+							<td>Priority :</td>
+							<td>Autore:</td>
+						</tr>
+						<tr>
+							<th scope="row">
+							<td>Severity :</td>
+							<td>Release di Progetto:
+								<table class="table table-striped">
+
+									<tbody>
+										<tr>
+											<th scope="row">
+											<td>Nr QF</td>
+											<td>Time in QF</td>
+										</tr>
+										<tr>
+											<th scope="row">
+											<td>n</td>
+											<td>12 ore</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+
+
+		<br>
+		<!-- STATI -->
+
+		<div class="card">
+
+			<h3 class="card-header" data-toggle="collapse" data-target="#stati">Stati
+			</h3>
+			<div id="stati" class="collapse">
+				<div class="card-block" style="overflow-x: auto;"
+					ng-controller="stato">
+					<div style="margin-right: 0px;">
+						<label class="switch"> <input type="checkbox"> <span
+							class="slider round"></span>
+						</label>
+					</div>
+
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Nome Stato</th>
+								<th>DA</th>
+								<th>A</th>
+								<th>Time</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Mark</td>
+								<td>Otto</td>
+								<td>@mdo</td>
+								<td>prova</td>
+							</tr>
+							<tr>
+								<td>Jacob</td>
+								<td>Thornton</td>
+								<td>@fat</td>
+								<td>provaooo</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h5>Numero Rifiutato:</h5>
+				</div>
+			</div>
+		</div>
+
+		<br>
+
+		<!-- TASK -->
+		<div class="card">
+			<div class="card-header">
+			<h3>
+						Documenti
+						<button class="btn btn-secondary float-right" type="button"
+							data-toggle="collapse" data-target="#task"
+							><b>V</b></button>
+					</h3>
+					</div>
+			<div id="task" class="collapse">
+				<div class="card-block" style="overflow-x: auto;"
+					ng-controller="stato">
+					<ul class="nav nav-tabs">
+						<li class="nav-item"><a class="nav-link active"
+							data-target="#deploy" data-toggle="tab">Deploy</a></li>
+						<li class="nav-item"><a class="nav-link" data-target="#dba"
+							data-toggle="tab">Dba</a></li>
+						<li class="nav-item"><a class="nav-link" data-target="#test"
+							data-toggle="tab">Test</a></li>
+						<li class="nav-item"><a class="nav-link"
+							data-target="#controlloDoc" data-toggle="tab">Controllo
+								Documentale</a>
+						<li class="nav-item"><a class="nav-link"
+							data-target="#dataPreparation" data-toggle="tab">Data
+								Preparation</a></li>
+					</ul>
+					<div id="myTabContent" class="tab-content">
+						<div class="tab-pane active container" id="deploy">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Nome Stato Deploy</th>
+										<th>DA</th>
+										<th>A</th>
+										<th>Time</th>
+										<th>Autore</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Mark</td>
+										<td>Otto</td>
+										<td>@mdo</td>
+										<td>prova</td>
+										<td>prova</td>
+									</tr>
+									<tr>
+										<td>Jacob</td>
+										<td>Thornton</td>
+										<td>@fat</td>
+										<td>provaooo</td>
+										<td>prova</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="tab-pane fade" id="dba">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Nome Stato DBA</th>
+										<th>DA</th>
+										<th>A</th>
+										<th>Time</th>
+										<th>Autore</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Mark</td>
+										<td>Otto</td>
+										<td>@mdo</td>
+										<td>prova</td>
+										<td>prova</td>
+									</tr>
+									<tr>
+										<td>Jacob</td>
+										<td>Thornton</td>
+										<td>@fat</td>
+										<td>provaooo</td>
+										<td>prova</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div class="tab-pane fade" id="test">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Nome Stato test</th>
+										<th>DA</th>
+										<th>A</th>
+										<th>Time</th>
+										<th>Autore</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Mark</td>
+										<td>Otto</td>
+										<td>@mdo</td>
+										<td>prova</td>
+										<td>prova</td>
+									</tr>
+									<tr>
+										<td>Jacob</td>
+										<td>Thornton</td>
+										<td>@fat</td>
+										<td>provaooo</td>
+										<td>prova</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="tab-pane fade" id="controlloDoc">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Nome Stato Controllo documentale</th>
+										<th>DA</th>
+										<th>A</th>
+										<th>Time</th>
+										<th>Autore</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Mark</td>
+										<td>Otto</td>
+										<td>@mdo</td>
+										<td>prova</td>
+										<td>prova</td>
+									</tr>
+									<tr>
+										<td>Jacob</td>
+										<td>Thornton</td>
+										<td>@fat</td>
+										<td>provaooo</td>
+										<td>prova</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div class="tab-pane fade" id="dataPreparation">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Nome Stato data Preparation</th>
+										<th>DA</th>
+										<th>A</th>
+										<th>Time</th>
+										<th>Autore</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Mark</td>
+										<td>Otto</td>
+										<td>@mdo</td>
+										<td>prova</td>
+										<td>prova</td>
+									</tr>
+									<tr>
+										<td>Jacob</td>
+										<td>Thornton</td>
+										<td>@fat</td>
+										<td>provaooo</td>
+										<td>prova</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<br>
+
+		<!-- TEST CASE -->
+		<div class="card">
+
+			<h3 class="card-header" data-toggle="collapse"
+				data-target="#testCase">Test Case</h3>
+			<div id="testCase" class="collapse">
+				<div class="card-block" style="overflow-x: auto;"
+					ng-controller="stato">
+
+
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Numero TC</th>
+								<th>Tipo TC</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>8</td>
+								<td>Baseline</td>
+							</tr>
+							<tr>
+								<td>12</td>
+								<td>Nuovi</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>Aggiornati</td>
+							</tr>
+							<tr>
+								<td>6</td>
+								<td>Deprecati</td>
+							</tr>
+							<tr>
+								<td>4 di 876</td>
+								<td>Automation/Manual</td>
+							</tr>
+						</tbody>
+					</table>
+
+
+				</div>
+			</div>
+		</div>
+
+		<br>
+		<!-- TIMING -->
+		<div class="card">
+
+			<h3 class="card-header" data-toggle="collapse" data-target="#timing">Timing
+			</h3>
+			<div id="timing" class="collapse">
+				<div class="card-block" style="overflow-x: auto;"
+					ng-controller="stato">
+
+					<h1>INSERIRE GRAFICO</h1>
+
+				</div>
+			</div>
+		</div>
+
+		<br>
+		<!-- AUTORE -->
+		<div class="card">
+
+			<h3 class="card-header" data-toggle="collapse" data-target="#autore">Autore
+			</h3>
+			<div id="autore" class="collapse">
+				<div class="card-block" style="overflow-x: auto;"
+					ng-controller="stato">
+
+					<div style="display: inline;">
+						Sono stati impiegati <strong>5</strong> tester
+					</div>
+
+					<br> <br>
+
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Autore</th>
+								<th>Work Time</th>
+								<th>Work Type</th>
+								<th>Note</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>testerNome1</td>
+								<td>12</td>
+								<td>type</td>
+								<td>note1</td>
+							</tr>
+							<tr>
+								<td>testerNome2</td>
+								<td>12</td>
+								<td>type</td>
+								<td>note2</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<br>
+		<!-- CHECKLIST -->
+		<div class="card">
+
+			<h3 class="card-header" data-toggle="collapse"
+				data-target="#checklist">Checklist</h3>
+			<div id="checklist" class="collapse">
+				<div class="card-block" style="overflow-x: auto;"
+					ng-controller="stato">
+
+					<div style="display: inline;">
+						Sono state runnate <strong>2</strong> CL
+					</div>
+
+					<br> <br>
+
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>TC Previsti</th>
+								<th>TC Eseguiti</th>
+								<th>TC Passed</th>
+								<th>TC Not Passed</th>
+								<th>TC Non eseguiti</th>
+								<th>TC Non applicabili</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>80</td>
+								<td>5</td>
+								<td>65</td>
+								<td>0</td>
+								<td>0</td>
+								<td>10</td>
+							</tr>
+							<tr>
+								<td>112</td>
+								<td>92</td>
+								<td>10</td>
+								<td>0</td>
+								<td>2</td>
+								<td>8</td>
+							</tr>
+						</tbody>
+					</table>
+					</br>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Tester che hanno runnato TC</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Nome 1</td>
+							</tr>
+							<tr>
+								<td>Nome 2</td>
+							</tr>
+							<tr>
+								<td>Nome 3</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+		</div>
+		
+		</div>
