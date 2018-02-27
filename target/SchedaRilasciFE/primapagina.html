@@ -1,0 +1,259 @@
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+	<div class="container">
+		<a class="navbar-brand" href="#!/">Scheda Rilasci</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item ">
+					<a class="nav-link" href="#!/">Home</a>
+				</li>
+				<li class="nav-item ">
+					<a class="nav-link" href="#!/stato">Release status</a>
+				</li>
+				<li class="nav-item ">
+					<a class="nav-link" href="#!/infoReleaseProgetto">Info Release</a>
+				</li>
+				<li class="nav-item ">
+					<a class="nav-link" href="#!/infoReleaseIT">Info ReleaseIT</a>
+				</li>
+			</ul>
+			<a href="#!/batchManager" class="btn btn-info btn-sm"> 
+				<span class="fa fa-window-restore" aria-hidden="true"></span> Switch to backend
+			</a> 
+			<a class="navbar-brand nav-link" href="#!/logout"><span class="fa fa-power-off" aria-hidden="true"></span> Logout</a>
+		</div>
+	</div>
+</nav>
+
+	<br>
+
+
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-10 col-md-10 col-sm-8 offset-md-1">
+			<div class="card">
+				<div class="card-header">
+					<h2>
+						<b>Info Release </b>
+					</h2>
+				</div>
+				<div class="card-block">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-4">
+								<br>
+								<div class="input-group">
+									<h5>
+										Total Release SIRE: <span class="badge badge-default">{{dataSireTot}}</span>
+									</h5>
+								</div>
+								<hr>
+								<div class="input-group">
+									<h5>
+										Total Release SISS: <span class="badge badge-default">{{dataSissTot}}</span>
+									</h5>
+								</div>
+								<hr>
+								<div class="input-group">
+									<h5>
+										Release Deroghe SISS: <span class="badge badge-default">{{dataSissDerogheTot}}</span>
+									</h5>
+								</div>
+								<hr>
+								<div class="input-group">
+									<h5>
+										Total (Sire+Siss): <span class="badge badge-default">{{dataTot}}</span>
+									</h5>
+								</div>
+							</div>
+							<div class="col-md-8">
+								<canvas id="myChartRelease"> </canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br><br>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-10 col-sm-8 offset-md-1">
+			<div class="card">
+				<div class="card-header">
+					<h2>
+						<b>Info Release </b>
+					</h2>
+				</div>
+				<div class="card-block">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-4">
+								<br>
+								<div class="input-group">
+									<h5>
+										Total Release SIRE: <span class="badge badge-default">{{dataSireTot}}</span>
+									</h5>
+								</div>
+								<hr>
+								<div class="input-group">
+									<h5>
+										Total Release SISS: <span class="badge badge-default">{{dataSissTot}}</span>
+									</h5>
+								</div>
+								<hr>
+								<div class="input-group">
+									<h5>
+										Release Deroghe SISS: <span class="badge badge-default">{{dataSissDerogheTot}}</span>
+									</h5>
+								</div>
+								<hr>
+								<div class="input-group">
+									<h5>
+										Total (Sire+Siss): <span class="badge badge-default">{{dataTot}}</span>
+									</h5>
+								</div>
+							</div>
+							<div class="col-md-8">
+								<canvas id="myChartRelease"> </canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- 	<div class="container"> -->
+
+		<!-- 		<div class="container"> -->
+		<!-- 			<div class="row"> -->
+		<!-- 				<div class="col-sm" > -->
+		<!-- 					<div class="card animated bounceInDown"> -->
+		<!-- 						<div class="card-header"> -->
+		<!-- 							<h2>Info Release</h2> -->
+		<!-- 						</div> -->
+		<!-- 						<div class="container"> -->
+		<!-- 							<div class="row"> -->
+		<!-- 								<div class="col-sm-6"> -->
+		<!-- 									<br> -->
+		<!-- 									<div class="input-group"> -->
+		<!-- 										<h5> -->
+		<!-- 											Total Release SIRE: <span class="badge badge-default">{{dataSireTot}}</span> -->
+
+		<!-- 										</h5> -->
+		<!-- 									</div> -->
+		<!-- 									<hr> -->
+		<!-- 									<div class="input-group"> -->
+		<!-- 										<h5> -->
+		<!-- 											Total Release SISS: <span class="badge badge-default">{{dataSissTot}}</span> -->
+
+		<!-- 										</h5> -->
+		<!-- 									</div> -->
+		<!-- 									<hr> -->
+		<!-- 									<div class="input-group"> -->
+		<!-- 										<h5> -->
+		<!-- 											Release Deroghe SIRE: <span class="badge badge-default">{{dataSireDerogheTot}}</span> -->
+
+		<!-- 										</h5> -->
+		<!-- 									</div> -->
+		<!-- 									<hr> -->
+		<!-- 									<div class="input-group"> -->
+		<!-- 										<h5> -->
+		<!-- 											Release Deroghe SISS: <span class="badge badge-default">{{dataSissDerogheTot}}</span> -->
+
+		<!-- 										</h5> -->
+		<!-- 									</div> -->
+		<!-- 									<hr> -->
+		<!-- 									<div class="input-group"> -->
+		<!-- 										<h5> -->
+		<!-- 											Total (Sire+Siss): <span class="badge badge-default">{{dataTot}}</span> -->
+
+		<!-- 										</h5> -->
+		<!-- 									</div> -->
+		<!-- 								</div> -->
+		<!-- 								<br> -->
+		<!-- 								<div class="col-sm-6"> -->
+		<!-- 									<canvas id="myChartRelease"> </canvas> -->
+		<!-- 								</div> -->
+
+		<!-- 							</div> -->
+
+
+		<!-- 						</div> -->
+		<!-- 					</div> -->
+		<!-- 				</div> -->
+
+		<!-- 				<div class="col-sm"> -->
+		<!-- 				<br><br> -->
+		<!-- 					<div class="card animated bounceInDown"> -->
+		<!-- 						<div class="card-header"> -->
+
+		<!-- 							<h2>Info Release IT</h2> -->
+		<!-- 						</div> -->
+		<!-- 						<div class="container"> -->
+		<!-- 							<div class="row"> -->
+		<!-- 								<div class="col-sm-6"> -->
+		<!-- 									<br> -->
+		<!-- 									<div class="input-group"> -->
+		<!-- 										<h5> -->
+		<!-- 											Total Release IT SIRE: <span class="badge badge-default">{{dataSireTotReleaseIt}}</span> -->
+
+		<!-- 										</h5> -->
+		<!-- 									</div> -->
+		<!-- 									<hr> -->
+		<!-- 									<div class="input-group"> -->
+		<!-- 										<h5> -->
+		<!-- 											Total Release IT SISS: <span class="badge badge-default">{{dataSissTotReleaseIt}}</span> -->
+
+		<!-- 										</h5> -->
+		<!-- 									</div> -->
+		<!-- 									<hr> -->
+		<!-- 									<div class="input-group"> -->
+		<!-- 										<h5> -->
+		<!-- 											Release IT Deroghe SIRE: <span class="badge badge-default">{{dataSireDerogheTotReleaseIt}}</span> -->
+
+		<!-- 										</h5> -->
+		<!-- 									</div> -->
+		<!-- 									<hr> -->
+		<!-- 									<div class="input-group"> -->
+		<!-- 										<h5> -->
+		<!-- 											Release IT Deroghe SISS: <span class="badge badge-default">{{dataSissDerogheTotReleaseIt}}</span> -->
+
+		<!-- 										</h5> -->
+		<!-- 									</div> -->
+		<!-- 									<hr> -->
+		<!-- 									<div class="input-group"> -->
+		<!-- 										<h5> -->
+		<!-- 											Total (Sire+Siss): <span class="badge badge-default">{{dataTotReleaseIt}}</span> -->
+
+		<!-- 										</h5> -->
+		<!-- 									</div> -->
+		<!-- 								</div> -->
+		<!-- 								<br> -->
+		<!-- 								<div class="col-sm-6"> -->
+		<!-- 									<canvas id="myChartReleaseIt"> </canvas> -->
+		<!-- 								</div> -->
+
+		<!-- 							</div> -->
+
+
+		<!-- 						</div> -->
+		<!-- 					</div> -->
+		<!-- 				</div> -->
+		<!-- 			</div> -->
+		<!-- 		</div> -->
+		<!-- 	</div> -->
