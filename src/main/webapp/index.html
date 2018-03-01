@@ -28,6 +28,21 @@
 <link href="customcss/background.css" rel="stylesheet" type="text/css">
 <link href="customcss/infoReleaseIT.css" rel="stylesheet" type="text/css">
 
+<script>
+		function calcRows() {
+			var numRows = document.getElementById("numRows").value();
+			var singolo = document.getElementById("singolo");
+			console.log("Rows: "+numRows);
+			if (numRows == 1) {
+				singolo.style.display = "none";	
+				doppio.style.display = "block";
+			} else {
+				singolo.style.display = "block";	
+				doppio.style.display = "none";
+			}
+		}
+	</script>
+
 <title>Scheda Rilasci</title>
 </head>
 <body class="customBackground">

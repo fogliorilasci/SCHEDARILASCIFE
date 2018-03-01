@@ -1,254 +1,410 @@
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-	<div class="container">
-		<a class="navbar-brand" href="#!/">Scheda Rilasci</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+<div ng-controller="infoReleaseProgetto">
+	<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+		<div class="container">
+			<a class="navbar-brand" href="#!/">Scheda Rilasci</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item "><a class="nav-link" href="#!/">Home</a></li>
-				<li class="nav-item "><a class="nav-link" href="#!/stato">Release
-						status</a></li>
-				<li class="nav-item "><a class="nav-link"
-					href="#!/infoReleaseProgetto">Info Release</a></li>
-				<li class="nav-item "><a class="nav-link"
-					href="#!/infoReleaseIT">Info ReleaseIT</a></li>
-			</ul>
-			<a href="#!/batchManager" class="btn btn-info btn-sm"> <span
-				class="fa fa-window-restore" aria-hidden="true"></span> Switch to
-				backend
-			</a> <a class="navbar-brand nav-link" href="#!/logout"><span
-				class="fa fa-power-off" aria-hidden="true"></span> Logout</a>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item "><a class="nav-link" href="#!/">Home</a></li>
+					<li class="nav-item "><a class="nav-link" href="#!/stato">Release
+							status</a></li>
+					<li class="nav-item "><a class="nav-link"
+						href="#!/infoReleaseProgetto">Info Release</a></li>
+					<li class="nav-item "><a class="nav-link"
+						href="#!/infoReleaseIT">Info ReleaseIT</a></li>
+				</ul>
+				<a href="#!/batchManager" class="btn btn-info btn-sm"> <span
+					class="fa fa-window-restore" aria-hidden="true"></span> Switch to
+					backend
+				</a> <a class="navbar-brand nav-link" href="#!/logout"><span
+					class="fa fa-power-off" aria-hidden="true"></span> Logout</a>
+			</div>
 		</div>
-	</div>
-</nav>
+	</nav>
 
-<br><br>
+	<br>
+	<br>
 
-<div class="container-fluid">
-	<div class="row-fluid">
+	<div class="container-fluid">
+		<div class="row-fluid">
 
-		<div class="col-md-10 col-lg-10 col-sm-8 offset-md-1">
-			<div class="card">
-				<div class="card-header">
-					<h2>Info Release</h2>
-				</div>
-				<div class="card-block">
-					<div class="container">
-						<div class="row">
-							<div class="container" style="margin-top: 30px;">
-								<div class="input-group">
-									<input type="text" class="form-control"
-										placeholder="Search for..."> <span
-										class="input-group-btn ">
-										<button class="btn btn-success" type="button"><i class="fa fa-search" aria-hidden="true"></i> Cerca </button>
-									</span>
+			<div class="col-md-10 col-lg-10 col-sm-8 offset-md-1">
+				<div class="card">
+					<div class="card-header">
+						<h2>Info Release</h2>
+					</div>
+					<div class="card-block">
+						<div class="container">
+							<div class="row">
+								<div class="container" style="margin-top: 30px;">
+									<div class="input-group">
+										<input type="text" class="form-control" ng-model="idPolarion"
+											placeholder="Search for..."> <span
+											class="input-group-btn ">
+											<button class="btn btn-success" type="button"
+												ng-click="submitRelease(idPolarion)">
+												<i class="fa fa-search" aria-hidden="true"></i> Cerca
+											</button>
+										</span>
+									</div>
 								</div>
 							</div>
 						</div>
+						<br> <br>
+						<div id="message"></div>
 					</div>
-					<br> <br>
-					<div id="message"></div>
 				</div>
 			</div>
 		</div>
 	</div>
-	</div>
-	<br><br>
-	<!-- STATI -->
+	<br>
+	<br>
+	
+	<!-- GENERAL INFO -->
+	<div class="col-md-10 col-lg-10 col-sm-8 offset-md-1" ng-if="numRows == '1'">
+	<div class="card" >
+		<h3 class="card-header">General Info: {{infoGen[0]}}</h3>
+		<div class="card-block" style="overflow-x: auto;"
+			ng-controller="infoReleaseProgetto">
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<th scope="row">
+						<td><b>Progetto Polarion: </b>{{infoGen[1]}}</td>
+					</tr>
+					<tr>
+						<th scope="row">
+						<td><b>Applicativo: </b>{{infoGen[2]}}</td>
+					</tr>
+					<tr>
+						<th scope="row">
+						<td><b>Versione: </b>{{infoGen[3]}}</td>
+					</tr>
+					<tr>
+						<th scope="row">
+						<td><b>Link: </b>{{infoGen[4]}}</td>
+					</tr>
+					<tr>
+						<th scope="row">
+						<td><b>Repository: </b>{{infoGen[5]}}</td>
+					</tr>
+					<tr>
+						<th scope="row">
+						<td><b>Area di appartenenza: </b>{{infoGen[6]}}</td>
+					</tr>
+				</tbody>
+			</table>
 
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div class="col-md-10 col-lg-10 col-sm-8 offset-md-1">
-			<div class="card">
-				<div class="card-header d-inline-block">
-					<h2>Stati</h2>
-				</div>
-					<div class="card-block">
-					<div class="table-responsive">
-						<table class="table table-striped table-bordered table-hover" style="margin-bottom: 0px;">
-							<thead class=" thead-inverse ">
-								<tr>
-									<th>Nome stato</th>
-									<th>Da </th>
-									<th>A </th>
-									<th>Time</th>
-									<th>Quick Fix</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th scope="row">1</th>
-									<td>sadafsadasdsadaasfsd</td>
-									<td>Otto</td>
-									<td>@mdo</td>
-									<td>asdafas</td>
-								</tr>
-								<tr>
-									<th scope="row">2</th>
-									<td>Jacob</td>
-									<td>Thornton</td>
-									<td>@fat</td>
-									<td>asdafas</td>
-								</tr>
-								<tr>
-									<th scope="row">3</th>
-									<td>Larry</td>
-									<td>the Bird</td>
-									<td>@twitter</td>
-									<td>asdafas</td>
-								</tr>
-								<tr>
-									<th scope="row">4</th>
-									<td>Larry</td>
-									<td>the Bird</td>
-									<td>@twitter</td>
-									<td>asdafas</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
+		</div>
+	</div>
+	</div>
+
+<div class="col-md-10 col-lg-10 col-sm-8 offset-md-1" ng-if="numRows != '1'">
+	<div class="card" >
+		<h3 class="card-header">General Info</h3>
+		<div class="card-block" style="overflow-x: auto;"
+			ng-controller="infoReleaseProgetto">
+			<table class="table table-striped">
+
+				<tbody>
+					<tr>
+						<th scope="row">
+						<td><b>Totale Documenti: </b>{{infoGen[0]}}</td>
+					</tr>
+					<tr>
+						<th scope="row">
+						<td><b>Totale Defect: </b>{{infoGen[1]}}</td>
+					</tr>
+					<tr>
+						<th scope="row">
+						<td><b>Totale Anomalie: </b>{{infoGen[2]}}</td>
+					</tr>
+					<tr>
+						<th scope="row">
+						<td><b>Totale Progetti Di Sviluppo: </b>{{infoGen[3]}}</td>
+					</tr>
+					<tr>
+						<th scope="row">
+						<td><b>Totale Richieste Di Supporto: </b>{{infoGen[4]}}</td>
+					</tr>
+					<tr>
+						<th scope="row">
+						<td><b>Totale MEV: </b>{{infoGen[5]}}</td>
+					</tr>
+				</tbody>
+			</table>
+
 		</div>
 	</div>
 </div>
-<br> <br>
+	<br>
+	<!-- STATI -->
+	<div class="col-md-10 col-lg-10 col-sm-8 offset-md-1" ng-if="numRows == '1'">
+	<div class="card" >
+
+					<h3 class="card-header" data-toggle="collapse" data-target="#infoStati">
+						Stati
+						<button class="btn btn-secondary float-right" type="button"
+							data-toggle="collapse" data-target="#infoStati"
+							aria-controls="navbarToggleExternalContent" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<i class="fa fa-bars"></i>
+						</button>
+					</h3>
+					<div id="infoStati" class="collapse">
+						<div class="card-block"  style="overflow-x: auto;"
+							ng-controller="infoReleaseProgetto">
+							<div class="box-inliner">
+								<label class="switch"><input
+									ng-model="checkedSlider" type="checkbox"> <span
+									class="slider"></span>
+								</label>
+								<p><b>Time Reale/Time Lavorato:</b> </p>
+							</div>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Nome Stato</th>
+										<th>DA</th>
+										<th>A</th>
+										<th class="lavorato" ng-if="checkedSlider">Time Lavorato</th>
+										<th class="reale" ng-if="!checkedSlider">Time Reale</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="num in range(infoStati.length, 5)">
+										<td>{{infoStati[num]}}</td>
+										<td>{{infoStati[num+1]}}</td>
+										<td>{{infoStati[num+2]}}</td>
+										<td class="lavorato" ng-if="checkedSlider">{{infoStati[num+3]}}</td>
+										<td class="reale" ng-if="!checkedSlider">{{infoStati[num+4]}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<br>
+					</div>
+				</div>
+				</div>
+	<br> <br>
 
 	<!-- DOCUMENTI -->
 
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div class="col-md-10 col-lg-10 col-sm-8 offset-md-1">
-			<div class="card">
-					<h3 class="card-header" data-toggle="collapse" data-target="#documenti">
-					Documenti
-					<button class="btn btn-secondary float-right" type="button"
-						data-toggle="collapse" data-target="#documenti"
-						aria-controls="navbarToggleExternalContent" aria-expanded="false"
-						aria-label="Toggle navigation">
-						<i class="fa fa-bars"></i>
-					</button>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="col-md-10 col-lg-10 col-sm-8 offset-md-1">
+				<div class="card">
+					<h3 class="card-header" data-toggle="collapse"
+						data-target="#infoDocumenti">
+						Documenti
+						<button class="btn btn-secondary float-right" type="button"
+							data-toggle="collapse" data-target="#infoDocumenti"
+							aria-controls="navbarToggleExternalContent" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<i class="fa fa-bars"></i>
+						</button>
 
 
-				</h3>
-				<div id="documenti" class="collapse">
-					
-					<div class="card-block">
-						<div class="table-responsive">
-							<table class="table table-striped table-bordered table-hover"
-								style="margin-bottom: 0px;">
-								<thead class=" thead-inverse ">
-									<tr>
-										<th>Nome stato</th>
-										<th>Da</th>
-										<th>A</th>
-										<th>Time</th>
-										<th>Quick Fix</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<th scope="row">1</th>
-										<td>sadafsadasdsadaasfsd</td>
-										<td>Otto</td>
-										<td>@mdo</td>
-										<td>asdafas</td>
-									</tr>
-									<tr>
-										<th scope="row">2</th>
-										<td>Jacob</td>
-										<td>Thornton</td>
-										<td>@fat</td>
-										<td>asdafas</td>
-									</tr>
-									<tr>
-										<th scope="row">3</th>
-										<td>Larry</td>
-										<td>the Bird</td>
-										<td>@twitter</td>
-										<td>asdafas</td>
-									</tr>
-									<tr>
-										<th scope="row">4</th>
-										<td>Larry</td>
-										<td>the Bird</td>
-										<td>@twitter</td>
-										<td>asdafas</td>
-									</tr>
-								</tbody>
-							</table>
+					</h3>
+					<div id="infoDocumenti" class="collapse">
 
+						<div class="card-block">
+							<div class="table-responsive">
+								<table class="table table-striped table-bordered table-hover"
+									style="margin-bottom: 0px;">
+									<thead class=" thead-inverse ">
+										<tr>
+											<th>SIS</th><th>RdD</th><th>SFSW</th><th>PTS</th><th>STSW</th><th>CKS</th><th>RNS</th><th>RTS</th><th>RDU</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>{{infoDocumenti[0]}}</td>
+											<td>{{infoDocumenti[1]}}</td>
+											<td>{{infoDocumenti[2]}}</td>
+											<td>{{infoDocumenti[3]}}</td>
+											<td>{{infoDocumenti[4]}}</td>
+											<td>{{infoDocumenti[5]}}</td>
+											<td>{{infoDocumenti[6]}}</td>
+											<td>{{infoDocumenti[7]}}</td>
+											<td>{{infoDocumenti[8]}}</td>
+										</tr>
+									</tbody>
+								</table>
+
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-</div>
-</div>
+	</div>
 
-<br><br>
+	<br>
+	<br>
+	
+	<!-- PROGETTO SVILUPPO -->
 
-<!-- DEFECT  -->
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="col-md-10 col-lg-10 col-sm-8 offset-md-1">
+				<div class="card">
+					<h3 class="card-header" data-toggle="collapse"
+						data-target="#infoSviluppo">
+						Progetti Sviluppo
+						<button class="btn btn-secondary float-right" type="button"
+							data-toggle="collapse" data-target="#infoSviluppo"
+							aria-controls="navbarToggleExternalContent" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<i class="fa fa-bars"></i>
+						</button>
 
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div class="col-md-10 col-lg-10 col-sm-8 offset-md-1">
-			<div class="card">
-				<h3 class="card-header" data-toggle="collapse" data-target="#defect">
-					Defect
-					<button class="btn btn-secondary float-right" type="button"
-						data-toggle="collapse" data-target="#defect"
-						aria-controls="navbarToggleExternalContent" aria-expanded="false"
-						aria-label="Toggle navigation">
-						<i class="fa fa-bars"></i>
-					</button>
-				</h3>
-				<div id="defect" class="collapse">
-					<div class="card-block">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-6 col-lg-6 col-sm-10"
-									style="margin-top: 10px; margin-bottom: 10px;">
-									<div class="card">
-										<div class="card-block">
-											<div id="canvas-holder" style="width: 100%">
-												<canvas id="chartPie1"></canvas>
+
+					</h3>
+					<div id="infoSviluppo" class="collapse">
+
+						<div class="card-block">
+							<div class="table-responsive">
+								<table class="table table-striped table-bordered table-hover"
+									style="margin-bottom: 0px;">
+									<thead class=" thead-inverse ">
+										<tr>
+											<th>Id Polarion</th><th>Titolo</th><th>Defect Collegato</th>
+										</tr>
+									</thead>
+									<tbody>
+									<tr ng-repeat="num in range(infoSviluppo.length, 3)">
+										<td>{{infoSviluppo[num]}}</td>
+										<td>{{infoSviluppo[num+1]}}</td>
+										<td>{{infoSviluppo[num+2]}}</td>
+									</tr>
+								</tbody>
+								</table>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<br>
+	<br>
+	
+	<!-- PROGETTO MEV -->
+
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="col-md-10 col-lg-10 col-sm-8 offset-md-1">
+				<div class="card">
+					<h3 class="card-header" data-toggle="collapse"
+						data-target="#infoMev">
+						Progetti MEV
+						<button class="btn btn-secondary float-right" type="button"
+							data-toggle="collapse" data-target="#infoMev"
+							aria-controls="navbarToggleExternalContent" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<i class="fa fa-bars"></i>
+						</button>
+
+
+					</h3>
+					<div id="infoMev" class="collapse">
+
+						<div class="card-block">
+							<div class="table-responsive">
+								<table class="table table-striped table-bordered table-hover"
+									style="margin-bottom: 0px;">
+									<thead class=" thead-inverse ">
+										<tr>
+											<th>Id Polarion</th><th>Titolo</th><th>Defect Collegato</th>
+										</tr>
+									</thead>
+									<tbody>
+									<tr ng-repeat="num in range(infoMev.length, 3)">
+										<td>{{infoMev[num]}}</td>
+										<td>{{infoMev[num+1]}}</td>
+										<td>{{infoMev[num+2]}}</td>
+									</tr>
+								</tbody>
+								</table>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<br>
+	<br>
+
+	<!-- DEFECT  -->
+
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="col-md-10 col-lg-10 col-sm-8 offset-md-1">
+				<div class="card">
+					<h3 class="card-header" data-toggle="collapse"
+						data-target="#defect">
+						Defect
+						<button class="btn btn-secondary float-right" type="button"
+							data-toggle="collapse" data-target="#defect"
+							aria-controls="navbarToggleExternalContent" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<i class="fa fa-bars"></i>
+						</button>
+					</h3>
+					<div id="defect" class="collapse">
+						<div class="card-block">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-6 col-lg-6 col-sm-10"
+										style="margin-top: 10px; margin-bottom: 10px;">
+										<div class="card">
+											<div class="card-block">
+												<div id="canvas-holder" style="width: 100%">
+													<canvas id="chartPie1"></canvas>
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-								<div class="col-md-6 col-lg-6 col-sm-10"
-									style="margin-top: 10px; margin-bottom: 10px;">
-									<div class="card">
-										<div class="card-block">
-											<div id="canvas-holder" style="width: 100%">
-												<canvas id="chartPie2"></canvas>
+									<div class="col-md-6 col-lg-6 col-sm-10"
+										style="margin-top: 10px; margin-bottom: 10px;">
+										<div class="card">
+											<div class="card-block">
+												<div id="canvas-holder" style="width: 100%">
+													<canvas id="chartPie2"></canvas>
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-								<div class="w-100"></div>
-								<div class="col-md-6 col-lg-6 col-sm-10"
-									style="margin-top: 10px; margin-bottom: 10px;">
-									<div class="card">
-										<div class="card-block">
-											<div id="canvas-holder" style="width: 100%">
-												<canvas id="chartPie3"></canvas>
+									<div class="w-100"></div>
+									<div class="col-md-6 col-lg-6 col-sm-10"
+										style="margin-top: 10px; margin-bottom: 10px;">
+										<div class="card">
+											<div class="card-block">
+												<div id="canvas-holder" style="width: 100%">
+													<canvas id="chartPie3"></canvas>
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-								<div class="col-md-6 col-lg-6 col-sm-10"
-									style="margin-top: 10px; margin-bottom: 10px;">
-									<div class="card">
-										<div class="card-block">
-											<div id="canvas-holder" style="width: 100%">
-												<canvas id="chartPie4"></canvas>
+									<div class="col-md-6 col-lg-6 col-sm-10"
+										style="margin-top: 10px; margin-bottom: 10px;">
+										<div class="card">
+											<div class="card-block">
+												<div id="canvas-holder" style="width: 100%">
+													<canvas id="chartPie4"></canvas>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -260,43 +416,45 @@
 			</div>
 		</div>
 	</div>
-</div>
-<br><br>
+	<br>
+	<br>
 
-<!-- 	ANOMALIE -->
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div class="col-md-10 col-lg-10 col-sm-8 offset-md-1">
-			<div class="card">
-				<h3 class="card-header" data-toggle="collapse"
-					data-target="#anomalie">Anomalie
-					<button class="btn btn-secondary float-right" type="button"
-						data-toggle="collapse" data-target="#anomalie"
-						aria-controls="navbarToggleExternalContent" aria-expanded="false"
-						aria-label="Toggle navigation">
-						<i class="fa fa-bars"></i>
-					</button>
-				</h3>
-				<div id="anomalie" class="collapse">
-					<div class="card-block">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-6 col-lg-6 col-sm-10"
-								style="margin-top: 10px; margin-bottom: 10px;">
-									<div class="card">
-										<div class="card-block">
-											<div id="canvas-holder" style="width: 100%">
-												<canvas id="chartPie5"></canvas>
+	<!-- 	ANOMALIE -->
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="col-md-10 col-lg-10 col-sm-8 offset-md-1">
+				<div class="card">
+					<h3 class="card-header" data-toggle="collapse"
+						data-target="#anomalie">
+						Anomalie
+						<button class="btn btn-secondary float-right" type="button"
+							data-toggle="collapse" data-target="#anomalie"
+							aria-controls="navbarToggleExternalContent" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<i class="fa fa-bars"></i>
+						</button>
+					</h3>
+					<div id="anomalie" class="collapse">
+						<div class="card-block">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-6 col-lg-6 col-sm-10"
+										style="margin-top: 10px; margin-bottom: 10px;">
+										<div class="card">
+											<div class="card-block">
+												<div id="canvas-holder" style="width: 100%">
+													<canvas id="chartPie5"></canvas>
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-								<div class="col-md-6 col-lg-6 col-sm-10"
-								style="margin-top: 10px; margin-bottom: 10px;">
-									<div class="card">
-										<div class="card-block">
-											<div id="canvas-holder" style="width: 100%">
-												<canvas id="chartPie6"></canvas>
+									<div class="col-md-6 col-lg-6 col-sm-10"
+										style="margin-top: 10px; margin-bottom: 10px;">
+										<div class="card">
+											<div class="card-block">
+												<div id="canvas-holder" style="width: 100%">
+													<canvas id="chartPie6"></canvas>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -308,73 +466,73 @@
 			</div>
 		</div>
 	</div>
-</div>
 
-<br>
-<br>
-<!-- 	PROGETTO SVILUPPO   -->
+	<br> <br>
+	<!-- 	PROGETTO SVILUPPO   -->
 
 
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div class="col-md-10 col-lg-10 col-sm-8 offset-md-1">
-			<div class="card">
-				
-					<h3 class="card-header" data-toggle="collapse" data-target="#progettoSviluppo">
-					Progetto Sviluppo
-					<button class="btn btn-secondary float-right" type="button"
-						data-toggle="collapse" data-target="#progettoSviluppo"
-						aria-controls="navbarToggleExternalContent" aria-expanded="false"
-						aria-label="Toggle navigation">
-						<i class="fa fa-bars"></i>
-					</button>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="col-md-10 col-lg-10 col-sm-8 offset-md-1">
+				<div class="card">
+
+					<h3 class="card-header" data-toggle="collapse"
+						data-target="#progettoSviluppo">
+						Progetto Sviluppo
+						<button class="btn btn-secondary float-right" type="button"
+							data-toggle="collapse" data-target="#progettoSviluppo"
+							aria-controls="navbarToggleExternalContent" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<i class="fa fa-bars"></i>
+						</button>
 
 
-				</h3>
-				<div id="progettoSviluppo" class="collapse">
+					</h3>
+					<div id="progettoSviluppo" class="collapse">
 
-					<div class="card-block">
-						<div class="table-responsive">
-							<table class="table table-striped table-bordered table-hover"
-								style="margin-bottom: 0px;">
-								<thead class=" thead-inverse ">
-									<tr>
-										<th>ID</th>
-										<th>Titolo</th>
-										<th>Defect Aperto</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<th scope="row">1</th>
-										<td>sadafsadasdsadaasfsd</td>
-										<td>Otto</td>
-										<td>@mdo</td>
-										<td>asdafas</td>
-									</tr>
-									<tr>
-										<th scope="row">2</th>
-										<td>Jacob</td>
-										<td>Thornton</td>
-										<td>@fat</td>
-										<td>asdafas</td>
-									</tr>
-									<tr>
-										<th scope="row">3</th>
-										<td>Larry</td>
-										<td>the Bird</td>
-										<td>@twitter</td>
-										<td>asdafas</td>
-									</tr>
-									<tr>
-										<th scope="row">4</th>
-										<td>Larry</td>
-										<td>the Bird</td>
-										<td>@twitter</td>
-										<td>asdafas</td>
-									</tr>
-								</tbody>
-							</table>
+						<div class="card-block">
+							<div class="table-responsive">
+								<table class="table table-striped table-bordered table-hover"
+									style="margin-bottom: 0px;">
+									<thead class=" thead-inverse ">
+										<tr>
+											<th>ID</th>
+											<th>Titolo</th>
+											<th>Defect Aperto</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row">1</th>
+											<td>sadafsadasdsadaasfsd</td>
+											<td>Otto</td>
+											<td>@mdo</td>
+											<td>asdafas</td>
+										</tr>
+										<tr>
+											<th scope="row">2</th>
+											<td>Jacob</td>
+											<td>Thornton</td>
+											<td>@fat</td>
+											<td>asdafas</td>
+										</tr>
+										<tr>
+											<th scope="row">3</th>
+											<td>Larry</td>
+											<td>the Bird</td>
+											<td>@twitter</td>
+											<td>asdafas</td>
+										</tr>
+										<tr>
+											<th scope="row">4</th>
+											<td>Larry</td>
+											<td>the Bird</td>
+											<td>@twitter</td>
+											<td>asdafas</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -382,5 +540,3 @@
 		</div>
 	</div>
 </div>
-
-<br>
