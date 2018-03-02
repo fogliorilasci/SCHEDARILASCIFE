@@ -13,12 +13,12 @@
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item "><a class="nav-link" href="#!/">Home</a>
 					</li>
-					<li class="nav-item "><a class="nav-link" href="#!/stato">Release
-							status</a></li>
+<!-- 					<li class="nav-item "><a class="nav-link" href="#!/stato">Release -->
+<!-- 							status</a></li> -->
 					<li class="nav-item "><a class="nav-link"
-						href="#!/infoReleaseProgetto">Info Release</a></li>
-					<li class="nav-item "><a class="nav-link"
-						href="#!/infoReleaseIT">Info ReleaseIT</a></li>
+						href="#!/infoReleaseProgetto">Info Release di Progetto</a></li>
+<!-- 					<li class="nav-item "><a class="nav-link" -->
+<!-- 						href="#!/infoReleaseIT">Info ReleaseIT</a></li> -->
 				</ul>
 				<a href="#!/batchManager" class="btn btn-info btn-sm"> <span
 					class="fa fa-window-restore" aria-hidden="true"></span> Switch to
@@ -46,7 +46,7 @@
 								<div class="container" style="margin-top: 30px;">
 									<div class="input-group">
 										<input type="text" class="form-control" ng-model="idPolarion"
-											placeholder="Search for..."/> <span
+											placeholder="Search for..." /> <span
 											class="input-group-btn ">
 											<button class="btn btn-success" type="button"
 												ng-click="submitRelease(idPolarion)">
@@ -134,14 +134,14 @@
 						</button>
 					</h3>
 					<div id="stati" class="collapse">
-						<div class="card-block"  style="overflow-x: auto;"
+						<div class="card-block" style="overflow-x: auto;"
 							ng-controller="infoReleaseIT">
 							<div class="box-inliner">
-								<label class="switch"><input
-									ng-model="checkedSlider" type="checkbox"> <span
-									class="slider"></span>
-								</label>
-								<p><b>Time Reale/Time Lavorato:</b> </p>
+								<label class="switch"><input ng-model="checkedSlider"
+									type="checkbox"> <span class="slider"></span> </label>
+								<p>
+									<b>Time Reale/Time Lavorato:</b>
+								</p>
 							</div>
 							<table class="table table-striped">
 								<thead>
@@ -212,14 +212,14 @@
 											</tr>
 										</thead>
 										<tbody>
-									<tr ng-repeat="num in range(taskDeploy.length, 5)">
-										<td>{{taskDeploy[num]}}</td>
-										<td>{{taskDeploy[num+1]}}</td>
-										<td>{{taskDeploy[num+2]}}</td>
-										<td>{{taskDeploy[num+3]}}</td>
-										<td>{{taskDeploy[num+4]}}</td>
-									</tr>
-								</tbody>
+											<tr ng-repeat="num in range(taskDeploy.length, 5)">
+												<td>{{taskDeploy[num]}}</td>
+												<td>{{taskDeploy[num+1]}}</td>
+												<td>{{taskDeploy[num+2]}}</td>
+												<td>{{taskDeploy[num+3]}}</td>
+												<td>{{taskDeploy[num+4]}}</td>
+											</tr>
+										</tbody>
 									</table>
 								</div>
 								<div class="tab-pane fade" id="dba">
@@ -234,14 +234,14 @@
 											</tr>
 										</thead>
 										<tbody>
-									<tr ng-repeat="num in range(taskDba.length, 5)">
-										<td>{{taskDba[num]}}</td>
-										<td>{{taskDba[num+1]}}</td>
-										<td>{{taskDba[num+2]}}</td>
-										<td>{{taskDba[num+3]}}</td>
-										<td>{{taskDba[num+4]}}</td>
-									</tr>
-								</tbody>
+											<tr ng-repeat="num in range(taskDba.length, 5)">
+												<td>{{taskDba[num]}}</td>
+												<td>{{taskDba[num+1]}}</td>
+												<td>{{taskDba[num+2]}}</td>
+												<td>{{taskDba[num+3]}}</td>
+												<td>{{taskDba[num+4]}}</td>
+											</tr>
+										</tbody>
 									</table>
 								</div>
 
@@ -256,15 +256,15 @@
 												<th>Autore</th>
 											</tr>
 										</thead>
-											<tbody>
-									<tr ng-repeat="num in range(taskTest.length, 5)">
-										<td>{{taskTest[num]}}</td>
-										<td>{{taskTest[num+1]}}</td>
-										<td>{{taskTest[num+2]}}</td>
-										<td>{{taskTest[num+3]}}</td>
-										<td>{{taskTest[num+4]}}</td>
-									</tr>
-								</tbody>
+										<tbody>
+											<tr ng-repeat="num in range(taskTest.length, 5)">
+												<td>{{taskTest[num]}}</td>
+												<td>{{taskTest[num+1]}}</td>
+												<td>{{taskTest[num+2]}}</td>
+												<td>{{taskTest[num+3]}}</td>
+												<td>{{taskTest[num+4]}}</td>
+											</tr>
+										</tbody>
 									</table>
 								</div>
 								<div class="tab-pane fade" id="controlloDoc">
@@ -278,15 +278,15 @@
 												<th>Autore</th>
 											</tr>
 										</thead>
-											<tbody>
-									<tr ng-repeat="num in range(taskContrDoc.length, 5)">
-										<td>{{taskContrDoc[num]}}</td>
-										<td>{{taskContrDoc[num+1]}}</td>
-										<td>{{taskContrDoc[num+2]}}</td>
-										<td>{{taskContrDoc[num+3]}}</td>
-										<td>{{taskContrDoc[num+4]}}</td>
-									</tr>
-								</tbody>
+										<tbody>
+											<tr ng-repeat="num in range(taskContrDoc.length, 5)">
+												<td>{{taskContrDoc[num]}}</td>
+												<td>{{taskContrDoc[num+1]}}</td>
+												<td>{{taskContrDoc[num+2]}}</td>
+												<td>{{taskContrDoc[num+3]}}</td>
+												<td>{{taskContrDoc[num+4]}}</td>
+											</tr>
+										</tbody>
 									</table>
 								</div>
 
@@ -301,15 +301,15 @@
 												<th>Autore</th>
 											</tr>
 										</thead>
-												<tbody>
-									<tr ng-repeat="num in range(taskDataPrep.length, 5)">
-										<td>{{taskDataPrep[num]}}</td>
-										<td>{{taskDataPrep[num+1]}}</td>
-										<td>{{taskDataPrep[num+2]}}</td>
-										<td>{{taskDataPrep[num+3]}}</td>
-										<td>{{taskDataPrep[num+4]}}</td>
-									</tr>
-								</tbody>
+										<tbody>
+											<tr ng-repeat="num in range(taskDataPrep.length, 5)">
+												<td>{{taskDataPrep[num]}}</td>
+												<td>{{taskDataPrep[num+1]}}</td>
+												<td>{{taskDataPrep[num+2]}}</td>
+												<td>{{taskDataPrep[num+3]}}</td>
+												<td>{{taskDataPrep[num+4]}}</td>
+											</tr>
+										</tbody>
 									</table>
 								</div>
 							</div>
@@ -364,7 +364,8 @@
 									</tr>
 									<tr>
 										<td><b>Automation / Manual</b></td>
-										<td>{{TC[4]}}<b> / </b>{{TC[5]}}</td>
+										<td>{{TC[4]}}<b> / </b>{{TC[5]}}
+										</td>
 									</tr>
 								</tbody>
 							</table>
@@ -382,7 +383,7 @@
 						data-target="#timing">
 						Timing
 						<button class="btn btn-secondary float-right" type="button"
-							data-toggle="collapse" data-target="#documenti"
+							data-toggle="collapse" data-target="#timing"
 							aria-controls="navbarToggleExternalContent" aria-expanded="false"
 							aria-label="Toggle navigation">
 							<i class="fa fa-bars"></i>
@@ -390,9 +391,18 @@
 					</h3>
 					<div id="timing" class="collapse">
 						<div class="card-block" style="overflow-x: auto;"
-							ng-controller="stato">
+							ng-controller="infoReleaseIT">
 
-							<canvas id="chartTiming"> </canvas>
+							<div class="box-inliner">
+								<label class="switch"><input ng-model="checkedSlider2"
+									id="checkedSlider2" type="checkbox">
+									<span class="slider"></span> </label>
+								<p>
+									<b>Time Reale/Time Lavorato:</b>
+								</p>
+							</div>
+							<canvas id="chartTiming" ng-hide="checkedSlider2"> </canvas>
+							<canvas id="chartTimingWorking" ng-hide="!checkedSlider2"> </canvas>
 
 						</div>
 					</div>
@@ -417,21 +427,22 @@
 							ng-controller="stato">
 
 							<div style="display: inline;">
-							&nbsp;Sono stati impiegati <strong>{{numeroTesterImpiegati[0]}}</strong> tester
+								&nbsp;Sono stati impiegati <strong>{{numeroTesterImpiegati[0]}}</strong>
+								tester
 							</div>
 
 							<br> <br>
 
-								<table class="table table-striped">
-										<thead>
-											<tr>
-												<th>Autore</th>
-												<th>Work Time</th>
-												<th>Work Type</th>
-												<th>Note</th>
-											</tr>
-										</thead>
-												<tbody>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Autore</th>
+										<th>Work Time</th>
+										<th>Work Type</th>
+										<th>Note</th>
+									</tr>
+								</thead>
+								<tbody>
 									<tr ng-repeat="num in range(testers.length, 4)">
 										<td>{{testers[num]}}</td>
 										<td>{{testers[num+1]}}</td>
@@ -439,7 +450,7 @@
 										<td>{{testers[num+3]}}</td>
 									</tr>
 								</tbody>
-									</table>
+							</table>
 						</div>
 					</div>
 				</div>
@@ -471,7 +482,7 @@
 							<table class="table table-striped">
 								<thead>
 									<tr>
-									   <th>ID Polarion</th>
+										<th>ID Polarion</th>
 										<th>TC Previsti</th>
 										<th>TC Eseguiti</th>
 										<th>TC Passed</th>
@@ -479,10 +490,10 @@
 										<th>TC Non applicabili</th>
 										<th>TC Invalidi</th>
 										<th>TC Non eseguiti</th>
-										
+
 									</tr>
 								</thead>
-											<tbody>
+								<tbody>
 									<tr ng-repeat="num in range(CL.length, 8)">
 										<td>{{CL[num]}}</td>
 										<td>{{CL[num+1]}}</td>
@@ -502,7 +513,7 @@
 										<th>Tester che hanno runnato TC</th>
 									</tr>
 								</thead>
-									<tbody>
+								<tbody>
 									<tr ng-repeat="i in CLUsers">
 										<td>{{i}}</td>
 									</tr>
