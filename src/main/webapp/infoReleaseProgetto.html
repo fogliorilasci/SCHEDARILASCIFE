@@ -18,6 +18,8 @@
 <!-- 						href="#!/infoReleaseProgetto">Info Release</a></li> -->
 					<li class="nav-item "><a class="nav-link"
 						href="#!/infoReleaseIT">Info ReleaseIT</a></li>
+					<li class="nav-item "><a class="nav-link"
+						href="#!/infoReleaseFiltri">Filtra Release di Progetto</a></li>	
 				</ul>
 				<a href="#!/batchManager" class="btn btn-info btn-sm"> <span
 					class="fa fa-window-restore" aria-hidden="true"></span> Switch to
@@ -98,6 +100,39 @@
 									<th scope="row">
 									<td><b>Area di appartenenza: </b>{{infoGen[6]}}</td>
 								</tr>
+<!-- 								<tr> -->
+<!-- 									<th scope="row"> -->
+<!-- 									<td><b>- RIEPILOGO TOTALI ITEMS -</b></td> -->
+<!-- 								</tr> -->
+<!-- 								<tr> -->
+<!-- 									<th scope="row"> -->
+<!-- 									<td><b>Totali progetti di sviluppo: </b>{{infoGen[7]}}</td><td><b>Totali anomalie: </b>{{infoGen[8]}}</td> -->
+<!-- 								</tr> -->
+<!-- 								<tr> -->
+<!-- 									<th scope="row"> -->
+<!-- 									<td><b>Totali defect: </b>{{infoGen[9]}}</td><td><b>Totali documenti: </b>{{infoGen[10]}}</td> -->
+<!-- 								</tr> -->
+								
+								<table class="table table-striped table-bordered table-hover"
+									style="margin-bottom: 0px;">
+									<thead class=" thead-inverse ">
+										<tr>
+											<th>Totali progetti di sviluppo</th>
+											<th>Totali anomalie</th>
+											<th>Totali defect</th>
+											<th>Totali documenti</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>{{infoGen[7]}}</td>
+											<td>{{infoGen[8]}}</td>
+											<td>{{infoGen[9]}}</td>
+											<td>{{infoGen[10]}}</td>
+										</tr>
+									</tbody>
+								</table>
+								
 							</tbody>
 						</table>
 
