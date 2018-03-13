@@ -1,0 +1,22 @@
+.overlay2 {
+	text-align: left;
+	position: relative;
+	left: 40%;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	display: none;
+}
+
+.overlayback2 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: 0.8;
+	filter: alpha(opacity = 80);
+	z-index: 5;
+	display: none;
+}

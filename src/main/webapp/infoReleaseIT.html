@@ -1,4 +1,11 @@
 <div ng-controller="infoReleaseIT">
+
+	<div id="overlayback2" class="overlayback2"></div>
+	<div id="overlay2" class="overlay2">
+		<font color="WHITE" size="3"></font><br> <img alt="loading"
+			title="loading" src="images/loading.gif" />
+	</div>
+
 	<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
 		<div class="container">
 			<a class="navbar-brand" href="#!/">Scheda Rilasci</a>
@@ -13,14 +20,14 @@
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item "><a class="nav-link" href="#!/">Home</a>
 					</li>
-<!-- 					<li class="nav-item "><a class="nav-link" href="#!/stato">Release -->
-<!-- 							status</a></li> -->
+					<!-- 					<li class="nav-item "><a class="nav-link" href="#!/stato">Release -->
+					<!-- 							status</a></li> -->
 					<li class="nav-item "><a class="nav-link"
 						href="#!/infoReleaseProgetto">Info Release di Progetto</a></li>
 					<li class="nav-item "><a class="nav-link"
-						href="#!/infoReleaseFiltri">Filtra Release di Progetto</a></li>		
-<!-- 					<li class="nav-item "><a class="nav-link" -->
-<!-- 						href="#!/infoReleaseIT">Info ReleaseIT</a></li> -->
+						href="#!/infoReleaseFiltri">Filtra Release di Progetto</a></li>
+					<!-- 					<li class="nav-item "><a class="nav-link" -->
+					<!-- 						href="#!/infoReleaseIT">Info ReleaseIT</a></li> -->
 				</ul>
 				<a href="#!/batchManager" class="btn btn-info btn-sm"> <span
 					class="fa fa-window-restore" aria-hidden="true"></span> Switch to
@@ -113,6 +120,29 @@
 											</tbody>
 										</table></td>
 								</tr>
+								<table class="table table-striped table-bordered table-hover"
+									style="margin-bottom: 0px;">
+									<thead class=" thead-inverse ">
+										<tr>
+											<th>Totali documenti</th>
+											<th>Totali defect</th>
+											<th>Totali anomalie</th>
+											<th>Totali progetti di sviluppo</th>
+											<th>Totali richieste di supporto</th>
+											<th>Totali MEV</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>{{infoGen[13]}}</td>
+											<td>{{infoGen[14]}}</td>
+											<td>{{infoGen[15]}}</td>
+											<td>{{infoGen[16]}}</td>
+											<td>{{infoGen[17]}}</td>
+											<td>{{infoGen[18]}}</td>
+										</tr>
+									</tbody>
+								</table>
 							</tbody>
 						</table>
 
@@ -188,21 +218,22 @@
 						<div class="card-block" style="overflow-x: auto;"
 							ng-controller="stato">
 							<ul class="nav nav-tabs">
-								<li class="nav-item"><a class="nav-link active"
-									data-target="#deploy" data-toggle="tab">Deploy</a></li>
-								<li class="nav-item"><a class="nav-link" data-target="#dba"
-									data-toggle="tab">Dba</a></li>
-								<li class="nav-item"><a class="nav-link"
-									data-target="#test" data-toggle="tab">Test</a></li>
-								<li class="nav-item"><a class="nav-link"
-									data-target="#controlloDoc" data-toggle="tab">Controllo
+								<li class="nav-item" ng-hide="taskDeploylength == '0'"><a
+									class="nav-link active" data-target="#deploy" data-toggle="tab">Deploy</a></li>
+								<li class="nav-item" ng-hide="taskDbalength == '0'"><a
+									class="nav-link" data-target="#dba" data-toggle="tab">Dba</a></li>
+								<li class="nav-item" ng-hide="taskTestlength == '0'"><a
+									class="nav-link" data-target="#test" data-toggle="tab">Test</a></li>
+								<li class="nav-item" ng-hide="taskContrDoclength == '0'"><a
+									class="nav-link" data-target="#controlloDoc" data-toggle="tab">Controllo
 										Documentale</a>
-								<li class="nav-item"><a class="nav-link"
-									data-target="#dataPreparation" data-toggle="tab">Data
-										Preparation</a></li>
+								<li class="nav-item" ng-hide="taskDataPreplength == '0'"><a
+									class="nav-link" data-target="#dataPreparation"
+									data-toggle="tab">Data Preparation</a></li>
 							</ul>
 							<div id="myTabContent" class="tab-content">
-								<div class="tab-pane active" id="deploy">
+								<div class="tab-pane active" id="deploy"
+									ng-hide="taskDeploylength == '0'">
 									<table class="table table-striped">
 										<thead>
 											<tr>
@@ -224,7 +255,8 @@
 										</tbody>
 									</table>
 								</div>
-								<div class="tab-pane fade" id="dba">
+								<div class="tab-pane fade" id="dba"
+									ng-hide="taskDbalength == '0'">
 									<table class="table table-striped">
 										<thead>
 											<tr>
@@ -247,7 +279,8 @@
 									</table>
 								</div>
 
-								<div class="tab-pane fade" id="test">
+								<div class="tab-pane fade" id="test"
+									ng-hide="taskTestlength == '0'">
 									<table class="table table-striped">
 										<thead>
 											<tr>
@@ -269,7 +302,8 @@
 										</tbody>
 									</table>
 								</div>
-								<div class="tab-pane fade" id="controlloDoc">
+								<div class="tab-pane fade" id="controlloDoc"
+									ng-hide="taskContrDoclength == '0'">
 									<table class="table table-striped">
 										<thead>
 											<tr>
@@ -292,7 +326,8 @@
 									</table>
 								</div>
 
-								<div class="tab-pane fade" id="dataPreparation">
+								<div class="tab-pane fade" id="dataPreparation"
+									ng-hide="taskDataPreplength == '0'">
 									<table class="table table-striped">
 										<thead>
 											<tr>
@@ -397,8 +432,8 @@
 
 							<div class="box-inliner">
 								<label class="switch"><input ng-model="checkedSlider2"
-									id="checkedSlider2" type="checkbox">
-									<span class="slider"></span> </label>
+									id="checkedSlider2" type="checkbox"> <span
+									class="slider"></span> </label>
 								<p>
 									<b>Time Reale/Time Lavorato:</b>
 								</p>
@@ -409,10 +444,10 @@
 						</div>
 					</div>
 				</div>
-
 				<br>
+
 				<!-- AUTORE -->
-				<div class="card">
+				<div class="card" ng-hide="testerslength == '0'">
 
 					<h3 class="card-header" data-toggle="collapse"
 						data-target="#autore">
@@ -455,11 +490,12 @@
 							</table>
 						</div>
 					</div>
-				</div>
 
+				</div>
 				<br>
+
 				<!-- CHECKLIST -->
-				<div class="card">
+				<div class="card" ng-hide="CLSizelength == '0'">
 
 					<h3 class="card-header" data-toggle="collapse"
 						data-target="#checklist">

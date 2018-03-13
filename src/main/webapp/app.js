@@ -473,9 +473,20 @@ app.controller('infoReleaseIT', function($scope, $http,$route) {
 
 	$scope.submitRelease = function(idPolarion) {
 
-		console.log("Id: "+idPolarion);
+		$scope.taskDataPreplength = 0;
+		$scope.taskDeploylength = 0;
+		$scope.taskContrDoclength = 0;
+		$scope.taskDbalength = 0;
+		$scope.taskTestlength = 0;
+
+		$scope.testerslength = 0;
+		$scope.CLSizelength = 0;
 
 		var responseFinal;
+		
+		$("#overlay2").show();
+		$("#overlayback2").show();
+		$('html, body').animate({scrollTop: '0px'}, 0);
 
 		$http.get('http://localhost:8080/SchedaRilasci/infoReleaseIT?idPolarion='+idPolarion).
 		then(function(response) {
@@ -501,8 +512,16 @@ app.controller('infoReleaseIT', function($scope, $http,$route) {
 			$scope.numRows=responseFinal["numRows"];
 			$scope.timingReleaseIT=responseFinal["timing"]["releaseit"];
 			$scope.timingTask=responseFinal["timing"]["deploydba_qf_test"];
-			console.log($scope.timingReleaseIT);
-			console.log($scope.timingTask);
+
+			$scope.taskDataPreplength = $scope.taskDataPrep.length;
+			$scope.taskDeploylength = $scope.taskDeploy.length;
+			$scope.taskContrDoclength = $scope.taskContrDoc.length;
+			$scope.taskDbalength = $scope.taskDba.length;
+			$scope.taskTestlength = $scope.taskTest.length;
+
+			$scope.testerslength = $scope.testers.length;
+
+			$scope.CLSizelength = $scope.CLSize[0];
 
 			var chartTiming = new Chart(document.getElementById("chartTiming"), {
 				type: 'horizontalBar',
@@ -545,6 +564,9 @@ app.controller('infoReleaseIT', function($scope, $http,$route) {
 					}
 				}
 			});
+			
+			$("#overlay2").hide("fast");
+			$("#overlayback2").hide("fast");
 		});
 	}
 	$scope.range = function(max, step) {
@@ -566,16 +588,21 @@ app.controller('infoReleaseProgetto', function($scope, $http,$route) {
 
 	$scope.submitRelease = function(idPolarion) {
 
-		console.log("Id: "+idPolarion);
+		$scope.infoSviluppolength = 0;
+		$scope.infoMevlength = 0;
+		$scope.infoDefectlength = 0;
+		$scope.infoAnomalialength = 0;
 
 		var responseFinal;
+		
+		$("#overlay2").show();
+		$("#overlayback2").show();
+		$('html, body').animate({scrollTop: '0px'}, 0);
 
 		$http.get('http://localhost:8080/SchedaRilasci/infoReleaseProgetto?idPolarion='+idPolarion).
 		then(function(response) {
-			console.log("Entri??");
+			
 			responseFinal = response.data;
-
-			console.log(responseFinal["task"]);
 
 			$scope.numRows=responseFinal["numRows"];
 			$scope.infoGen=responseFinal["infoGenerali"];
@@ -587,7 +614,17 @@ app.controller('infoReleaseProgetto', function($scope, $http,$route) {
 			$scope.infoDefectLength=$scope.infoDefect.length;
 			$scope.infoAnomalia=responseFinal["infoAnomalia"];
 
-			console.log("Size: "+$scope.numRows);
+			$scope.infoSviluppolength = $scope.infoSviluppo.length;
+			$scope.infoMevlength = $scope.infoMev.length;
+
+			for(var i = 0; i <= $scope.infoDefectlength; i ++){
+				$scope.infoDefectlength += $scope.infoDefect[i];
+			}
+
+			for(var i = 0; i <= $scope.infoAnomalialength; i ++){
+				$scope.infoAnomalialength += $scope.infoAnomalia[i];
+			}
+			console.log("Tot anom: "+$scope.infoAnomalialength);
 
 			var severityDefectRelease = new Chart(document.getElementById("severityDefectRelease"), {
 				type: 'doughnut',
@@ -691,7 +728,9 @@ app.controller('infoReleaseProgetto', function($scope, $http,$route) {
 				}
 			});
 
-
+			$("#overlay2").hide("fast");
+			$("#overlayback2").hide("fast");
+			
 		});
 
 	}
@@ -704,25 +743,6 @@ app.controller('infoReleaseProgetto', function($scope, $http,$route) {
 		return input;
 	};
 
-	$scope.range = function (size,start, end) {
-		var ret = [];        
-		console.log(size,start, end);
-
-		if (size < end) {
-			end = size;
-			if(size<$scope.gap){
-				start = 0;
-			}else{
-				start = size-$scope.gap;
-			}
-
-		}
-		for (var i = start; i < end; i++) {
-			ret.push(i);
-		}        
-		console.log(ret);        
-		return ret;
-	};
 });
 
 app.controller('infoReleaseFiltri', function($scope, $http,$route) {
@@ -738,6 +758,10 @@ app.controller('infoReleaseFiltri', function($scope, $http,$route) {
 		console.log("Codice Area1: "+codiceArea);
 
 		var responseFinal;
+		
+		$("#overlay2").show();
+		$("#overlayback2").show();
+		$('html, body').animate({scrollTop: '0px'}, 0);
 
 		$http.get('http://localhost:8080/SchedaRilasci/getArea?codiceArea='+codiceArea).
 		then(function(response) {
@@ -750,6 +774,9 @@ app.controller('infoReleaseFiltri', function($scope, $http,$route) {
 
 			$scope.sizeAree=$scope.aree.length;
 			console.log("SizeAree2: "+$scope.sizeAree);
+			
+			$("#overlay2").hide("fast");
+			$("#overlayback2").hide("fast");
 		});
 	}
 
