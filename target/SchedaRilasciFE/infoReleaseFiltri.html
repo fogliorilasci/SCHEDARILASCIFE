@@ -5,7 +5,7 @@
 		<font color="WHITE" size="3"></font><br> <img alt="loading"
 			title="loading" src="images/loading.gif" />
 	</div>
-	
+
 	<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
 		<div class="container">
 			<a class="navbar-brand" href="#!/">Scheda Rilasci</a>
@@ -19,10 +19,6 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item "><a class="nav-link" href="#!/">Home</a></li>
-					<!-- 					<li class="nav-item "><a class="nav-link" href="#!/stato">Release -->
-					<!-- 							status</a></li> -->
-					<!-- 					<li class="nav-item "><a class="nav-link" -->
-					<!-- 						href="#!/infoReleaseProgetto">Info Release</a></li> -->
 					<li class="nav-item "><a class="nav-link"
 						href="#!/infoReleaseIT">Info ReleaseIT</a></li>
 					<li class="nav-item "><a class="nav-link"
@@ -47,25 +43,29 @@
 					<div class="card-header">
 						<h2>Info Release</h2>
 					</div>
-					<div class="card-block">
+					<div class="card-block" >
 						<div class="container">
 							<div class="row">
 								<div class="container" style="margin-top: 30px;">
 									<h4>Seleziona il filtro da utilizzare</h4>
-									<input type="radio" id="area" name="radioArea"
+										<input type="radio" id="area" name="radioArea"
 										ng-model="filtroA" value="area"><label>Filtra
-										per Area</label>&nbsp&nbsp&nbsp&nbsp&nbsp<input type="radio"
-										id="contesto" name="radioContesto" ng-model="filtroA"
-										value="contesto"><label>Filtra per Contesto</label> <br>
-									<!-- 										 <input type="radio" id="project" name="radioProject" -->
-									<!-- 										ng-model="filtroA" value="project"><label>Filtra -->
-									<!-- 										per Progetto</label>  -->
+										per Area</label>&nbsp&nbsp&nbsp&nbsp&nbsp
+										
+										<input type="radio" id="applicativo" name="radioApplicativo"
+										ng-model="filtroA" value="applicativo"><label>Filtra
+										per Applicativo</label>&nbsp&nbsp&nbsp&nbsp&nbsp
+										
+										<input type="radio"	id="contesto" name="radioContesto" 
+										ng-model="filtroA" value="contesto"><label>Filtra 
+										per Contesto</label>
+										 <br>
 									<br>
-									<div class="input-group" ng-show="filtroA == 'area'">
+									<div class="input-group" ng-show="filtroA == 'applicativo'">
 										<div class="input-group">
 											<h4>Seleziona l'area</h4>
 										</div>
-										
+
 										<div>
 											<input type="text" id="txtAutoComplete" list="codiceArea"
 												name="codiceArea" size="102" ng-model="codiceArea">
@@ -153,9 +153,13 @@
 													ng-click="submitReleaseArea(codiceArea)">
 													<i class="fa fa-search" aria-hidden="true"></i> Cerca area
 												</button>
+												<button class="btn btn-warn" type="button"
+													onClick="window.location.reload()">
+													<i aria-hidden="true"></i> Reset
+												</button>
 											</span>
 										</div>
-										<br> <br> <br> 
+										<br> <br> <br>
 										<div ng-if="sizeAree != '0'">
 											<div class="input-group">
 												<h4>Seleziona l'applicativo</h4>
@@ -173,28 +177,164 @@
 														<i class="fa fa-search" aria-hidden="true"></i> Cerca
 														rilasci
 													</button>
+													<button class="btn btn-warn" type="button"
+														onClick="window.location.reload()">
+														<i aria-hidden="true"></i> Reset
+													</button>
 												</span>
 											</div>
 										</div>
 
-										<br> <br> <br> <br> <br> <br> 
-										<div class="input-group" ng-show="IsVisible">
-											<table class="table table-striped">
+										<br> <br> <br> <br> <br> <br>
+										<div class="input-group" ng-show="IsVisible3" style="overflow-x: auto; max-height: 700px; max-width: 1400px;"> 
+											<table 
+												class="table table-striped table-condensed table-hover">
 												<thead>
 													<tr>
 														<th>ID Polarion</th>
+														<th>Titolo</th>
+														<th>Data Creazione</th>
+														<th>Data Ultimo Aggiornamento</th>
 													</tr>
 												</thead>
-												<tbody ng-controller="infoReleaseProgetto">
-													<tr
-														ng-repeat="idPolarion in rilasciApplicativo"
-														ng-click="submitRelease(idPolarion)">
-														<td><a href="#!/infoReleaseProgetto">{{idPolarion}}</a></td>
+												<tbody ng-controller="infoReleaseFiltri">
+													<tr ng-repeat="num in range(rilasciApplicativo.length, 4)">
+														<td>{{rilasciApplicativo[num]}}</td>
+														<td>{{rilasciApplicativo[num+1]}}</td>
+														<td>{{rilasciApplicativo[num+2]}}</td>
+														<td>{{rilasciApplicativo[num+3]}}</td>
 													</tr>
 												</tbody>
 											</table>
+
+
 										</div>
 									</div>
+									
+									<div class="input-group" ng-show="filtroA == 'area'">
+										<div class="input-group">
+											<h4>Seleziona l'area</h4>
+										</div>
+
+										<div>
+											<input type="text" id="txtAutoComplete" list="codiceArea"
+												name="codiceArea" size="102" ng-model="codiceArea">
+											<datalist id="codiceArea">
+												<option value="W8B5 - Governo Esposizione Servizi" />
+												<option
+													value="W8AC - Servizi per l'Informazione Terrritoriale" />
+												<option
+													value="W8D1 - Qualità Monitoraggio SLA e Posta Elettronica" />
+												<option
+													value="W311 - Procedimenti Dichiarativi e Autorizzativi, Contabilizzazione, Sistemi Informativi per l'Agricoltura" />
+												<option value="W224 - Erogazioni Fondi PRS, Sport e Cultura" />
+												<option
+													value="W853A - Innovazione per gli EELL ed il Sociale" />
+												<option value="W553 - Sistemi Entrate e Tributi" />
+												<option value="W751 - FSE, Emergenza e Servizi al Cittadino" />
+												<option value="W755 - Anagrafi e Sistemi di Settore" />
+												<option value="W8B8 - Software Quality" />
+												<option value="W313 - Aiuti Diretti e PSR" />
+												<option value="W853 - INNOVAZIONE DIGITALE" />
+												<option
+													value="W221 - Sviluppo Economico e Reddito di Autonomia" />
+												<option
+													value="W8B3 - Sicurezza Applicativa e Progetti Innovativi" />
+												<option value="W215 - Staff Diffusione Servizi" />
+												<option
+													value="W754 - Prevenzione e Presa in Carico Integrata Socio - Sanitaria" />
+												<option
+													value="W312 - Piattaforme Sisco e Siarl, Fascicolo Aziendale" />
+												<option value="W752 - Veterinaria" />
+												<option
+													value="D600 - DIVISIONE SERVIZI PER IL WELFARE TERRITORIALE" />
+												<option value="W8AM - Piattaforma dei Servizi Documentali" />
+												<option value="W8C7 - Incident e Delivery Management" />
+												<option value="Area non assegnata" />
+												<option value="W8AB - Servizi al Personale" />
+												<option value="W8B2 - Base Dati" />
+												<option value="W222 - Istruzione e Formazione" />
+												<option
+													value="W753 - Farmaceutica, Protesica e Prescrizioni" />
+												<option value="W8B1 - Architettura Sistemi Informativi" />
+												<option
+													value="W451 - Casa, Housing Sociale, Aler, Protezione Civile, Infrastrutture e Mobilità - Procedure Autorizzatorie" />
+												<option
+													value="W852 - STRATEGIA E GOVERNO DELLA TRASFORMAZIONE DIGITALE" />
+												<option
+													value="W8AP - Piattaforme dei Servizi di Informazione Territoriale e di Cooperazione" />
+												<option value="W227 - SIAGE" />
+												<option
+													value="W551 - Sistemi Amministrativi per il Sistema Regionale" />
+												<option value="W8B6 - Integrazione Tecnica" />
+												<option
+													value="W223 - Erogazionio FESR, Università e Ricerca" />
+												<option
+													value="W06C - Staff Supervisione e Supporto Assistenza" />
+												<option
+													value="W712 - Governo dell'Offerta e dei Fattori Produttivi e CC - DWH e BI" />
+												<option
+													value="W8AT - Piattaforme dei Servizi HR di Facility Management" />
+												<option
+													value="W8AN - Piattaforma dei Servizi Fiduciari e di Provisioning" />
+												<option value="W8B9 - Application Lifecycle Management" />
+												<option value="W854 - BUSINESS DEVELOPMENT" />
+												<option value="W756 - Sistemi di Accoglienza Flussi" />
+												<option value="W8CB - Piattaforme di Gestione Sistemistica" />
+												<option
+													value="W8AA - Servizi Documentali e a Supporto delle Attività Istituzionali" />
+												<option value="W554 - Supervisione e Monitoraggio Servizi" />
+												<option value="W8B4 - Tecnologie" />
+												<option value="S150 - OPERATIONS" />
+												<option value="W656 - Servizi di Prenotazione" />
+												<option value="W8B7 - Performance e Automazione del Test" />
+												<option value="W658 - Sviluppo Soluzioni Accoglienza e CCR" />
+												<option value="W225 - Erogazioni FSE e Lavoro" />
+												<option value="W8AQ - Piattaforme dei Sistemi Direzionali" />
+												<option value="S410 - Gestione della Domanda" />
+												<option
+													value="W452 - Ambiente, Energia e Sviluppo Sostenibile - Territorio, Urbanistica e Difesa del Suolo" />
+												<option
+													value="W615 - Sviluppo e Gestione Servizi Aziendali Territoriali" />
+
+											</datalist>
+											&nbsp&nbsp&nbsp&nbsp&nbsp <span class="input-group-btn ">
+												<button class="btn btn-success" type="button"
+													ng-click="submitReleaseSoloArea(codiceArea)">
+													<i class="fa fa-search" aria-hidden="true"></i> Cerca area
+												</button>
+												<button class="btn btn-warn" type="button"
+													onClick="window.location.reload()">
+													<i aria-hidden="true"></i> Reset
+												</button>
+											</span>
+										</div>
+										<br> <br> <br> <br> <br> <br>
+										<div class="input-group" ng-show="IsVisible" style="overflow-x: auto; max-height: 700px; max-width: 1400px;"> 
+											<table 
+												class="table table-striped table-condensed table-hover">
+												<thead>
+													<tr>
+														<th>ID Polarion</th>
+														<th>Titolo</th>
+														<th>Data Creazione</th>
+														<th>Data Ultimo Aggiornamento</th>
+													</tr>
+												</thead>
+												<tbody ng-controller="infoReleaseFiltri">
+													<tr ng-repeat="num in range(rilasciPerAree.length, 4)">
+														<td>{{rilasciPerAree[num]}}</td>
+														<td>{{rilasciPerAree[num+1]}}</td>
+														<td>{{rilasciPerAree[num+2]}}</td>
+														<td>{{rilasciPerAree[num+3]}}</td>
+													</tr>
+												</tbody>
+											</table>
+
+
+										</div>
+									</div>
+									
 									<div class="input-group" ng-show="filtroA == 'contesto'">
 										<div class="input-group">
 											<div class="input-group">
@@ -214,28 +354,36 @@
 												rilasci
 											</button>
 											<button class="btn btn-warn" type="button"
-												ng-click="refresh()">
-												<i class="fa fa-search" aria-hidden="true"></i> Reset
+												onClick="window.location.reload()">
+												<i aria-hidden="true"></i> Reset
 											</button>
-										</span> <br> <br> <br> <br> <br> <br>
-										<input type="hidden" value="{{rilasciApplicativolength}}"> 
-										<div class="input-group" ng-show="IsVisible2 && rilasciApplicativolength != '0'">
-											<table class="table table-striped">
+										</span> <br> <br> <br> <br> <br> <br> <input
+											type="hidden" value="{{rilasciApplicativolength}}">
+										<div class="input-group"
+											ng-show="IsVisible2 && rilasciApplicativolength != '0'" style="overflow-x: auto; max-height: 700px;">
+											<table
+												class="table table-condensed table-striped table-hover">
 												<thead>
 													<tr>
 														<th>ID Polarion</th>
+														<th>Titolo</th>
+														<th>Data Creazione</th>
+														<th>Data Ultimo Aggiornamento</th>
 													</tr>
 												</thead>
-												<tbody ng-controller="infoReleaseProgetto">
-													<tr ng-repeat="idPolarion in rilasciContesto"
-														ng-click="submitRelease(idPolarion)">
-														<td><a href="#!/infoReleaseProgetto">{{idPolarion}}</a></td>
+												<tbody ng-controller="infoReleaseFiltri">
+													<tr ng-repeat="num in range(rilasciContesto.length, 4)">
+														<td>{{rilasciContesto[num]}}</td>
+														<td>{{rilasciContesto[num+1]}}</td>
+														<td>{{rilasciContesto[num+2]}}</td>
+														<td>{{rilasciContesto[num+3]}}</td>
 													</tr>
 												</tbody>
 											</table>
 										</div>
 										<div ng-show="rilasciApplicativolength == '0'">
-											<h4 >Non sono presenti rilasci per l'applicativo selezionato.</h4>
+											<h4>Non sono presenti rilasci per l'applicativo
+												selezionato.</h4>
 										</div>
 									</div>
 								</div>
@@ -248,5 +396,8 @@
 			</div>
 		</div>
 	</div>
+
+
+
 	<br> <br> <br> <br> <br> <br>
 </div>

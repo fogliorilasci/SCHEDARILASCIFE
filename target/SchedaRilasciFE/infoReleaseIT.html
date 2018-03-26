@@ -55,7 +55,8 @@
 								<div class="container" style="margin-top: 30px;">
 									<div class="input-group">
 										<input type="text" class="form-control" ng-model="idPolarion"
-											placeholder="Search for..." /> <span
+											id="idPolarion" placeholder="Search for..."
+											style="text-transform: uppercase" /> <span
 											class="input-group-btn ">
 											<button class="btn btn-success" type="button"
 												ng-click="submitRelease(idPolarion)">
@@ -217,6 +218,20 @@
 					<div id="task" class="collapse">
 						<div class="card-block" style="overflow-x: auto;"
 							ng-controller="stato">
+
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>ID Task</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="idTask in infoTaskId">
+										<td>{{idTask}}</td>
+									</tr>
+								</tbody>
+							</table>
+
 							<ul class="nav nav-tabs">
 								<li class="nav-item" ng-hide="taskDeploylength == '0'"><a
 									class="nav-link active" data-target="#deploy" data-toggle="tab">Deploy</a></li>
@@ -438,6 +453,19 @@
 									<b>Time Reale/Time Lavorato:</b>
 								</p>
 							</div>
+							<!-- 							<div id="chartTiming" style="height: 370px; max-width: 920px; margin: 0px auto;"></div> -->
+							<div style="width: 200px; height: 30px; background: #325A64;">
+								Release IT Timing</div>
+							<br>
+							<div style="width: 200px; height: 30px; background: #8C5564;">
+								Deploy+DBA Timing</div>
+							<br>
+							<div style="width: 200px; height: 30px; background: #2EB9EB;">
+								Test Timing</div>
+							<br>
+							<div style="width: 200px; height: 30px; background: #2455EB;">
+								Quick Fix Timing</div>
+							<br>
 							<canvas id="chartTiming" ng-hide="checkedSlider2"> </canvas>
 							<canvas id="chartTimingWorking" ng-hide="!checkedSlider2"> </canvas>
 
