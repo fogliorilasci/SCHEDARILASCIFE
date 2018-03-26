@@ -97,10 +97,12 @@
 									<td><b>Data Creazione:</b> {{infoGen[9]}}</td>
 								</tr>
 								<tr>
-								<input type="hidden" value="{{infoGen[10]}}" id="idPolarion">
+									<input type="hidden" value="{{infoGen[10]}}" id="idPolarion">
 									<th scope="row">
 									<td><b>Priority: </b>{{infoGen[5]}}</td>
-									<td><b>Release di Progetto: </b><button ng-controller="infoReleaseProgetto" ng-click="submitRelease(idPolarion)">{{infoGen[10]}}</button></td>
+									<td><b>Release di Progetto: </b>
+										<button ng-controller="infoReleaseProgetto"
+											ng-click="submitRelease(idPolarion)">{{infoGen[10]}}</button></td>
 								</tr>
 								<tr>
 									<th scope="row">
@@ -159,7 +161,7 @@
 				<div class="card">
 
 					<h3 class="card-header" data-toggle="collapse" data-target="#stati">
-						Stati
+						Timing
 						<button class="btn btn-secondary float-right" type="button"
 							data-toggle="collapse" data-target="#stati"
 							aria-controls="navbarToggleExternalContent" aria-expanded="false"
@@ -167,6 +169,44 @@
 							<i class="fa fa-bars"></i>
 						</button>
 					</h3>
+					<div id="timing" class="collapse">
+						<div class="card-block" style="overflow-x: auto;"
+							ng-controller="infoReleaseIT">
+
+							<div class="box-inliner">
+								<label class="switch"><input ng-model="checkedSlider2"
+									id="checkedSlider2" type="checkbox"> <span
+									class="slider"></span> </label>
+								<p>
+									<b>Time Reale/Time Lavorato:</b>
+								</p>
+							</div>
+							<!-- 							<div id="chartTiming" style="height: 370px; max-width: 920px; margin: 0px auto;"></div> -->
+
+							<div id="timing" class="collapse">
+								<div class="card-block" style="overflow-x: auto;">
+									<div id="chartTiming"
+										style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+									<div style="width: 200px; height: 30px; background: #325A64;">
+										Release IT Timing</div>
+									<br>
+									<div style="width: 200px; height: 30px; background: #8C5564;">
+										Deploy+DBA Timing</div>
+									<br>
+									<div style="width: 200px; height: 30px; background: #2EB9EB;">
+										Test Timing</div>
+									<br>
+									<div style="width: 200px; height: 30px; background: #2455EB;">
+										Quick Fix Timing</div>
+									<br>
+									<canvas id="chartTiming" ng-hide="checkedSlider2"> </canvas>
+									<canvas id="chartTimingWorking" ng-hide="!checkedSlider2"> </canvas>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<br> <br>
 					<div id="stati" class="collapse">
 						<div class="card-block" style="overflow-x: auto;"
 							ng-controller="infoReleaseIT">
@@ -181,8 +221,8 @@
 								<thead>
 									<tr>
 										<th>Nome Stato</th>
-										<th>DA</th>
-										<th>A</th>
+										<!-- 										<th>DA</th> -->
+										<!-- 										<th>A</th> -->
 										<th class="lavorato" ng-if="checkedSlider">Time Lavorato</th>
 										<th class="reale" ng-if="!checkedSlider">Time Reale</th>
 									</tr>
@@ -190,8 +230,8 @@
 								<tbody>
 									<tr ng-repeat="num in range(stati.length, 5)">
 										<td>{{stati[num]}}</td>
-										<td>{{stati[num+1]}}</td>
-										<td>{{stati[num+2]}}</td>
+										<!-- 										<td>{{stati[num+1]}}</td> -->
+										<!-- 										<td>{{stati[num+2]}}</td> -->
 										<td class="lavorato" ng-if="checkedSlider">{{stati[num+3]}}</td>
 										<td class="reale" ng-if="!checkedSlider">{{stati[num+4]}}</td>
 									</tr>
@@ -430,50 +470,50 @@
 
 				<br>
 				<!-- TIMING -->
-				<div class="card">
+				<!-- 				<div class="card"> -->
 
-					<h3 class="card-header" data-toggle="collapse"
-						data-target="#timing">
-						Timing
-						<button class="btn btn-secondary float-right" type="button"
-							data-toggle="collapse" data-target="#timing"
-							aria-controls="navbarToggleExternalContent" aria-expanded="false"
-							aria-label="Toggle navigation">
-							<i class="fa fa-bars"></i>
-						</button>
-					</h3>
-					<div id="timing" class="collapse">
-						<div class="card-block" style="overflow-x: auto;"
-							ng-controller="infoReleaseIT">
+				<!-- 					<h3 class="card-header" data-toggle="collapse" -->
+				<!-- 						data-target="#timing"> -->
+				<!-- 						Timing -->
+				<!-- 						<button class="btn btn-secondary float-right" type="button" -->
+				<!-- 							data-toggle="collapse" data-target="#timing" -->
+				<!-- 							aria-controls="navbarToggleExternalContent" aria-expanded="false" -->
+				<!-- 							aria-label="Toggle navigation"> -->
+				<!-- 							<i class="fa fa-bars"></i> -->
+				<!-- 						</button> -->
+				<!-- 					</h3> -->
+				<!-- 					<div id="timing" class="collapse"> -->
+				<!-- 						<div class="card-block" style="overflow-x: auto;" -->
+				<!-- 							ng-controller="infoReleaseIT"> -->
 
-							<div class="box-inliner">
-								<label class="switch"><input ng-model="checkedSlider2"
-									id="checkedSlider2" type="checkbox"> <span
-									class="slider"></span> </label>
-								<p>
-									<b>Time Reale/Time Lavorato:</b>
-								</p>
-							</div>
-							<!-- 							<div id="chartTiming" style="height: 370px; max-width: 920px; margin: 0px auto;"></div> -->
-							<div style="width: 200px; height: 30px; background: #325A64;">
-								Release IT Timing</div>
-							<br>
-							<div style="width: 200px; height: 30px; background: #8C5564;">
-								Deploy+DBA Timing</div>
-							<br>
-							<div style="width: 200px; height: 30px; background: #2EB9EB;">
-								Test Timing</div>
-							<br>
-							<div style="width: 200px; height: 30px; background: #2455EB;">
-								Quick Fix Timing</div>
-							<br>
-							<canvas id="chartTiming" ng-hide="checkedSlider2"> </canvas>
-							<canvas id="chartTimingWorking" ng-hide="!checkedSlider2"> </canvas>
+				<!-- 							<div class="box-inliner"> -->
+				<!-- 								<label class="switch"><input ng-model="checkedSlider2" -->
+				<!-- 									id="checkedSlider2" type="checkbox"> <span -->
+				<!-- 									class="slider"></span> </label> -->
+				<!-- 								<p> -->
+				<!-- 									<b>Time Reale/Time Lavorato:</b> -->
+				<!-- 								</p> -->
+				<!-- 							</div> -->
+				<!-- 														<div id="chartTiming" style="height: 370px; max-width: 920px; margin: 0px auto;"></div> -->
+				<!-- 							<div style="width: 200px; height: 30px; background: #325A64;"> -->
+				<!-- 								Release IT Timing</div> -->
+				<!-- 							<br> -->
+				<!-- 							<div style="width: 200px; height: 30px; background: #8C5564;"> -->
+				<!-- 								Deploy+DBA Timing</div> -->
+				<!-- 							<br> -->
+				<!-- 							<div style="width: 200px; height: 30px; background: #2EB9EB;"> -->
+				<!-- 								Test Timing</div> -->
+				<!-- 							<br> -->
+				<!-- 							<div style="width: 200px; height: 30px; background: #2455EB;"> -->
+				<!-- 								Quick Fix Timing</div> -->
+				<!-- 							<br> -->
+				<!-- 							<canvas id="chartTiming" ng-hide="checkedSlider2"> </canvas> -->
+				<!-- 							<canvas id="chartTimingWorking" ng-hide="!checkedSlider2"> </canvas> -->
 
-						</div>
-					</div>
-				</div>
-				<br>
+				<!-- 						</div> -->
+				<!-- 					</div> -->
+				<!-- 				</div> -->
+				<!-- 				<br> -->
 
 				<!-- AUTORE -->
 				<div class="card" ng-hide="testerslength == '0'">
@@ -590,6 +630,9 @@
 						</div>
 					</div>
 				</div>
+				<br>
+				<br>
+
 			</div>
 		</div>
 	</div>
