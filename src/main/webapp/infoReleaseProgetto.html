@@ -4,7 +4,7 @@
 	<div id="overlayback2" class="overlayback2"></div>
 	<div id="overlay2" class="overlay2">
 		<font color="WHITE" size="3"></font><br> <img alt="loading"
-			title="loading" src="images/loading.gif" />
+			title="loading" src="images/loader.gif" />
 	</div>
 
 	<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
@@ -76,6 +76,7 @@
 	<br> <br>
 
 	<!-- GENERAL INFO -->
+	<input type="hidden" value="{{numRows}}">
 	<div class="container-fluid" ng-if="numRows == '1'">
 		<div class="row-fluid">
 			<div class="col-md-10 col-lg-10 col-sm-8 offset-md-1">
@@ -219,7 +220,7 @@
 								<label class="switch"><input ng-model="checkedSlider"
 									type="checkbox"> <span class="slider"></span> </label>
 								<p>
-									<b>Time Reale/Time Lavorato:</b>
+									<b>Elapsed Time/Effort:</b>
 								</p>
 							</div>
 							<table class="table table-striped">

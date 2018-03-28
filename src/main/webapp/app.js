@@ -104,6 +104,16 @@ app.config(['$routeProvider',
 		},
 		templateUrl: 'infoReleaseProgetto.html', controller: 'infoReleaseProgetto'
 	}).
+	when('/infoReleaseProgetto/:idReleaseProgetto', {
+		resolve:{
+			"check" : function ($cookies,$location) {
+				if(!$cookies.get('IsLogin')){
+					$location.path('/');
+				}
+			}
+		},
+		templateUrl: 'infoReleaseProgetto.html', controller: 'infoReleaseProgettoDue'
+	}).
 	when('/infoReleaseFiltri', {
 		resolve:{
 			"check" : function ($cookies,$location) {
@@ -354,117 +364,117 @@ app.controller('avviaScheduler', function($scope, $http,$route) {
 
 
 //app.controller('infoReleaseProgettoCtrl', function($scope, $http,$route) {
-//	var chartPie1 = new Chart(document.getElementById("chartPie1"), {
-//		type: 'doughnut',
-//		data: {
-//			labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-//			datasets: [{
-//				label: "Population (millions)",
-//				backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-//				data: [2478,5267,734,784,433]
-//			}]
-//		},
-//		options: {
-//			title: {
-//				display: true,
-//				text: 'Predicted world population (millions) in 2050'
-//			}
-//		}
-//	});
-//
-//	var chartPie2 = new Chart(document.getElementById("chartPie2"), {
-//		type: 'doughnut',
-//		data: {
-//			labels: ["M", "T", "W", "T", "F", "S", "S"],
-//			datasets: [{
-//				backgroundColor: [
-//				                  "#2ecc71",
-//				                  "#3498db",
-//				                  "#95a5a6",
-//				                  "#9b59b6",
-//				                  "#f1c40f",
-//				                  "#e74c3c",
-//				                  "#34495e"
-//				                  ],
-//				                  data: [12, 19, 3, 17, 28, 24, 7]
-//			}]
-//		}
-//	});
-//
-//	var chartPie3 = new Chart(document.getElementById("chartPie3"), {
-//		type: 'pie',
-//		data: {
-//			labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-//			datasets: [{
-//				label: "Population (millions)",
-//				backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-//				data: [2478,5267,734,784,433]
-//			}]
-//		},
-//		options: {
-//			title: {
-//				display: true,
-//				text: 'Predicted world population (millions) in 2050'
-//			}
-//		}
-//	});
-//
-//	var chartPie4 = new Chart(document.getElementById("chartPie4"), {
-//		type: 'pie',
-//		data: {
-//			labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-//			datasets: [{
-//				label: "Population (millions)",
-//				backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-//				data: [2478,5267,734,784,433]
-//			}]
-//		},
-//		options: {
-//			title: {
-//				display: true,
-//				text: 'Predicted world population (millions) in 2050'
-//			}
-//		}
-//	});
-//
-//	var chartPie5 = new Chart(document.getElementById("chartPie5"), {
-//		type: 'doughnut',
-//		data: {
-//			labels: ["M", "T", "W", "T", "F", "S", "S"],
-//			datasets: [{
-//				backgroundColor: [
-//				                  "#2ecc71",
-//				                  "#3498db",
-//				                  "#95a5a6",
-//				                  "#9b59b6",
-//				                  "#f1c40f",
-//				                  "#e74c3c",
-//				                  "#34495e"
-//				                  ],
-//				                  data: [12, 19, 3, 17, 28, 24, 7]
-//			}]
-//		}
-//	});
-//
-//	var chartPie6 = new Chart(document.getElementById("chartPie6"), {
-//		type: 'pie',
-//		data: {
-//			labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-//			datasets: [{
-//				label: "Population (millions)",
-//				backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-//				data: [2478,5267,734,784,433]
-//			}]
-//		},
-//		options: {
-//			title: {
-//				display: true,
-//				text: 'Predicted world population (millions) in 2050'
-//			}
-//		}
-//	});
-//
-//
+//var chartPie1 = new Chart(document.getElementById("chartPie1"), {
+//type: 'doughnut',
+//data: {
+//labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+//datasets: [{
+//label: "Population (millions)",
+//backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+//data: [2478,5267,734,784,433]
+//}]
+//},
+//options: {
+//title: {
+//display: true,
+//text: 'Predicted world population (millions) in 2050'
+//}
+//}
+//});
+
+//var chartPie2 = new Chart(document.getElementById("chartPie2"), {
+//type: 'doughnut',
+//data: {
+//labels: ["M", "T", "W", "T", "F", "S", "S"],
+//datasets: [{
+//backgroundColor: [
+//"#2ecc71",
+//"#3498db",
+//"#95a5a6",
+//"#9b59b6",
+//"#f1c40f",
+//"#e74c3c",
+//"#34495e"
+//],
+//data: [12, 19, 3, 17, 28, 24, 7]
+//}]
+//}
+//});
+
+//var chartPie3 = new Chart(document.getElementById("chartPie3"), {
+//type: 'pie',
+//data: {
+//labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+//datasets: [{
+//label: "Population (millions)",
+//backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+//data: [2478,5267,734,784,433]
+//}]
+//},
+//options: {
+//title: {
+//display: true,
+//text: 'Predicted world population (millions) in 2050'
+//}
+//}
+//});
+
+//var chartPie4 = new Chart(document.getElementById("chartPie4"), {
+//type: 'pie',
+//data: {
+//labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+//datasets: [{
+//label: "Population (millions)",
+//backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+//data: [2478,5267,734,784,433]
+//}]
+//},
+//options: {
+//title: {
+//display: true,
+//text: 'Predicted world population (millions) in 2050'
+//}
+//}
+//});
+
+//var chartPie5 = new Chart(document.getElementById("chartPie5"), {
+//type: 'doughnut',
+//data: {
+//labels: ["M", "T", "W", "T", "F", "S", "S"],
+//datasets: [{
+//backgroundColor: [
+//"#2ecc71",
+//"#3498db",
+//"#95a5a6",
+//"#9b59b6",
+//"#f1c40f",
+//"#e74c3c",
+//"#34495e"
+//],
+//data: [12, 19, 3, 17, 28, 24, 7]
+//}]
+//}
+//});
+
+//var chartPie6 = new Chart(document.getElementById("chartPie6"), {
+//type: 'pie',
+//data: {
+//labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+//datasets: [{
+//label: "Population (millions)",
+//backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+//data: [2478,5267,734,784,433]
+//}]
+//},
+//options: {
+//title: {
+//display: true,
+//text: 'Predicted world population (millions) in 2050'
+//}
+//}
+//});
+
+
 //});
 
 app.controller('infoReleaseIT', function($scope, $http,$route) {
@@ -487,7 +497,7 @@ app.controller('infoReleaseIT', function($scope, $http,$route) {
 
 			$scope.testerslength = 0;
 			$scope.CLSizelength = 0;
-			
+
 			var responseFinal;
 
 			$("#overlay2").show();
@@ -502,212 +512,212 @@ app.controller('infoReleaseIT', function($scope, $http,$route) {
 				console.log(responseFinal["task"]);
 
 				$scope.numRows=responseFinal["numRows"];
-				
+
 				console.log("Righe: "+$scope.numRows);
 				if($scope.numRows !== 0){
-				
-				$scope.infoGen=responseFinal["general"]["infoGenerali"];
-				$scope.stati=responseFinal["status"]["stati"];
-				$scope.numeroRifiutati=responseFinal["status"]["rifiutati"];
-				$scope.taskDataPrep=responseFinal["task"]["infoTaskDataPrep"];
-				$scope.taskDeploy=responseFinal["task"]["infoTaskDeploy"];
-				$scope.taskContrDoc=responseFinal["task"]["infoTaskContrDoc"];
-				$scope.taskDba=responseFinal["task"]["infoTaskDBA"];
-				$scope.taskTest=responseFinal["task"]["infoTaskTest"];
-				$scope.TC=responseFinal["testcase"]["testcase"];
-				$scope.numeroTesterImpiegati=responseFinal["authors"]["author_size"];
-				$scope.testers=responseFinal["authors"]["author"];
-				$scope.CL=responseFinal["cl"]["cl_tc"];
-				$scope.CLUsers=responseFinal["cl"]["cl_users"];
-				$scope.CLSize=responseFinal["cl"]["cl_size"];
-				$scope.numRows=responseFinal["numRows"];
-				$scope.timingReleaseIT=responseFinal["timing"]["releaseit"];
-				$scope.timingTask=responseFinal["timing"]["deploydba_qf_test"];
-				
-				$scope.infoTaskId = responseFinal["task"]["infoTaskId"];
 
-				$scope.taskDataPreplength = $scope.taskDataPrep.length;
-				$scope.taskDeploylength = $scope.taskDeploy.length;
-				$scope.taskContrDoclength = $scope.taskContrDoc.length;
-				$scope.taskDbalength = $scope.taskDba.length;
-				$scope.taskTestlength = $scope.taskTest.length;
+					$scope.infoGen=responseFinal["general"]["infoGenerali"];
+					$scope.stati=responseFinal["status"]["stati"];
+					$scope.numeroRifiutati=responseFinal["status"]["rifiutati"];
+					$scope.taskDataPrep=responseFinal["task"]["infoTaskDataPrep"];
+					$scope.taskDeploy=responseFinal["task"]["infoTaskDeploy"];
+					$scope.taskContrDoc=responseFinal["task"]["infoTaskContrDoc"];
+					$scope.taskDba=responseFinal["task"]["infoTaskDBA"];
+					$scope.taskTest=responseFinal["task"]["infoTaskTest"];
+					$scope.TC=responseFinal["testcase"]["testcase"];
+					$scope.numeroTesterImpiegati=responseFinal["authors"]["author_size"];
+					$scope.testers=responseFinal["authors"]["author"];
+					$scope.CL=responseFinal["cl"]["cl_tc"];
+					$scope.CLUsers=responseFinal["cl"]["cl_users"];
+					$scope.CLSize=responseFinal["cl"]["cl_size"];
+					$scope.numRows=responseFinal["numRows"];
+					$scope.timingReleaseIT=responseFinal["timing"]["releaseit"];
+					$scope.timingTask=responseFinal["timing"]["deploydba_qf_test"];
 
-				$scope.testerslength = $scope.testers.length;
+					$scope.infoTaskId = responseFinal["task"]["infoTaskId"];
 
-				$scope.CLSizelength = $scope.CLSize[0];
+					$scope.taskDataPreplength = $scope.taskDataPrep.length;
+					$scope.taskDeploylength = $scope.taskDeploy.length;
+					$scope.taskContrDoclength = $scope.taskContrDoc.length;
+					$scope.taskDbalength = $scope.taskDba.length;
+					$scope.taskTestlength = $scope.taskTest.length;
 
-//				var chartTiming = new Chart(document.getElementById("chartTiming"), {
-//				type: 'bar',
-//				data: {
-//				labels: ["Release IT Timing", "Deploy/DBA Timing", "Test Timing", "Quick Fix Timing"],
-//				datasets: [
-//				{
-//				label: "Time (hours)",
-//				backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-//				data:
-//				[$scope.timingReleaseIT[2],$scope.timingTask[0],$scope.timingTask[4],$scope.timingTask[2]]
+					$scope.testerslength = $scope.testers.length;
 
-//				}
-//				]
-//				},
-//				options: {
-//				legend: { display: false },
-//				title: {
-//				display: true,
-//				text: ''
-//				}
-//				}
-//				});
+					$scope.CLSizelength = $scope.CLSize[0];
 
-				console.log("Timing: "+$scope.timingReleaseIT[2]+";"+$scope.timingTask[0]+";"+$scope.timingTask[4]+";"+$scope.timingTask[2]);
+//					var chartTiming = new Chart(document.getElementById("chartTiming"), {
+//					type: 'bar',
+//					data: {
+//					labels: ["Release IT Timing", "Deploy/DBA Timing", "Test Timing", "Quick Fix Timing"],
+//					datasets: [
+//					{
+//					label: "Time (hours)",
+//					backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+//					data:
+//					[$scope.timingReleaseIT[2],$scope.timingTask[0],$scope.timingTask[4],$scope.timingTask[2]]
 
-				var barOptions_stacked = {
-						tooltips: {
-							enabled: false
-						},
-						hover :{
-							animationDuration:0
-						},
-						scales: {
-							xAxes: [{
-								ticks: {
-									beginAtZero:true,
-									fontFamily: "'Open Sans Bold', sans-serif",
-									fontSize:11
-								},
-								scaleLabel:{
-									display:false
-								},
-								gridLines: {
-								}, 
-								stacked: true
-							}],
-							yAxes: [{
-								gridLines: {
-									display:false,
-									color: "#fff",
-									zeroLineColor: "#fff",
-									zeroLineWidth: 0
-								},
-								ticks: {
-									fontFamily: "'Open Sans Bold', sans-serif",
-									fontSize:11
-								},
-								stacked: true
+//					}
+//					]
+//					},
+//					options: {
+//					legend: { display: false },
+//					title: {
+//					display: true,
+//					text: ''
+//					}
+//					}
+//					});
+
+					console.log("Timing: "+$scope.timingReleaseIT[2]+";"+$scope.timingTask[0]+";"+$scope.timingTask[4]+";"+$scope.timingTask[2]);
+
+					var barOptions_stacked = {
+							tooltips: {
+								enabled: false
+							},
+							hover :{
+								animationDuration:0
+							},
+							scales: {
+								xAxes: [{
+									ticks: {
+										beginAtZero:true,
+										fontFamily: "'Open Sans Bold', sans-serif",
+										fontSize:11
+									},
+									scaleLabel:{
+										display:false
+									},
+									gridLines: {
+									}, 
+									stacked: true
+								}],
+								yAxes: [{
+									gridLines: {
+										display:false,
+										color: "#fff",
+										zeroLineColor: "#fff",
+										zeroLineWidth: 0
+									},
+									ticks: {
+										fontFamily: "'Open Sans Bold', sans-serif",
+										fontSize:11
+									},
+									stacked: true
+								}]
+							},
+							legend:{
+								display:false
+							},
+
+							animation: {
+								onComplete: function () {
+									var chartInstance = this.chart;
+									var ctx = chartInstance.ctx;
+									ctx.textAlign = "left";
+									ctx.font = "20px Open Sans";
+									ctx.fillStyle = "#fff";
+
+									Chart.helpers.each(this.data.datasets.forEach(function (dataset, i) {
+										var meta = chartInstance.controller.getDatasetMeta(i);
+										Chart.helpers.each(meta.data.forEach(function (bar, index) {
+											data = dataset.data[index];
+											if(i==0){
+												ctx.fillText(data, 50, bar._model.y+4);
+											} else {
+												ctx.fillText(data, bar._model.x-25, bar._model.y+4);
+											}
+										}),this)
+									}),this);
+								}
+							},
+							pointLabelFontFamily : "Quadon Extra Bold",
+							scaleFontFamily : "Quadon Extra Bold",
+					};
+
+					var chartTiming = new Chart(document.getElementById("chartTiming"), {
+						type: 'horizontalBar',
+						data: {
+							labels: ["", ""],
+
+							datasets: [{
+								data: [$scope.timingReleaseIT[2], 0],
+								backgroundColor: "rgba(63,103,126,1)",
+								hoverBackgroundColor: "rgba(50,90,100,1)"
+							},{
+								data: [, $scope.timingTask[0]],
+								backgroundColor: "rgba(163,103,126,1)",
+								hoverBackgroundColor: "rgba(140,85,100,1)"
+							},{
+								data: [, $scope.timingTask[4]],
+								backgroundColor: "rgba(63,203,226,1)",
+								hoverBackgroundColor: "rgba(46,185,235,1)"
+							},{
+								data: [, $scope.timingTask[2]],
+								backgroundColor: "rgba(3,223,236,1)",
+								hoverBackgroundColor: "rgba(36,85,235,1)"
 							}]
 						},
-						legend:{
-							display:false
+
+						options: barOptions_stacked,
+					});
+
+					var chartTimingWorking = new Chart(document.getElementById("chartTimingWorking"), {
+						type: 'horizontalBar',
+						data: {
+							labels: ["", ""],
+
+							datasets: [{
+								data: [$scope.timingReleaseIT[3], 0, , , ],
+								backgroundColor: "rgba(63,103,126,1)",
+								hoverBackgroundColor: "rgba(50,90,100,1)"
+							},{
+								data: [, $scope.timingTask[1], , , ],
+								backgroundColor: "rgba(163,103,126,1)",
+								hoverBackgroundColor: "rgba(140,85,100,1)"
+							},{
+								data: [, $scope.timingTask[5], , , ],
+								backgroundColor: "rgba(63,203,226,1)",
+								hoverBackgroundColor: "rgba(46,185,235,1)"
+							},{
+								data: [, $scope.timingTask[3], , , ],
+								backgroundColor: "rgba(3,223,236,1)",
+								hoverBackgroundColor: "rgba(36,85,235,1)"
+							}]
 						},
 
-						animation: {
-							onComplete: function () {
-								var chartInstance = this.chart;
-								var ctx = chartInstance.ctx;
-								ctx.textAlign = "left";
-								ctx.font = "20px Open Sans";
-								ctx.fillStyle = "#fff";
+						options: barOptions_stacked,
+					});
 
-								Chart.helpers.each(this.data.datasets.forEach(function (dataset, i) {
-									var meta = chartInstance.controller.getDatasetMeta(i);
-									Chart.helpers.each(meta.data.forEach(function (bar, index) {
-										data = dataset.data[index];
-										if(i==0){
-											ctx.fillText(data, 50, bar._model.y+4);
-										} else {
-											ctx.fillText(data, bar._model.x-25, bar._model.y+4);
-										}
-									}),this)
-								}),this);
-							}
-						},
-						pointLabelFontFamily : "Quadon Extra Bold",
-						scaleFontFamily : "Quadon Extra Bold",
-				};
+//					var chartTimingWorking = new Chart(document.getElementById("chartTimingWorking"), {
+//					type: 'bar',
+//					data: {
+//					labels: ["Release IT Timing Working", "Deploy/DBA Timing Working", "Test Timing Working", "Quick Fix Timing Working"],
+//					datasets: [
+//					{
+//					label: "Time working (hours)",
+//					backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+//					data: [$scope.timingReleaseIT[3],$scope.timingTask[1],$scope.timingTask[5],$scope.timingTask[3]]
+//					}
+//					]
+//					},
+//					options: {
+//					legend: { display: false },
+//					title: {
+//					display: true,
+//					text: ''
+//					}
+//					}
+//					});
 
-				var chartTiming = new Chart(document.getElementById("chartTiming"), {
-					type: 'horizontalBar',
-					data: {
-						labels: ["", ""],
-
-						datasets: [{
-							data: [$scope.timingReleaseIT[2], 0],
-							backgroundColor: "rgba(63,103,126,1)",
-							hoverBackgroundColor: "rgba(50,90,100,1)"
-						},{
-							data: [, $scope.timingTask[0]],
-							backgroundColor: "rgba(163,103,126,1)",
-							hoverBackgroundColor: "rgba(140,85,100,1)"
-						},{
-							data: [, $scope.timingTask[4]],
-							backgroundColor: "rgba(63,203,226,1)",
-							hoverBackgroundColor: "rgba(46,185,235,1)"
-						},{
-							data: [, $scope.timingTask[2]],
-							backgroundColor: "rgba(3,223,236,1)",
-							hoverBackgroundColor: "rgba(36,85,235,1)"
-						}]
-					},
-
-					options: barOptions_stacked,
-				});
-
-				var chartTimingWorking = new Chart(document.getElementById("chartTimingWorking"), {
-					type: 'horizontalBar',
-					data: {
-						labels: ["", ""],
-
-						datasets: [{
-							data: [$scope.timingReleaseIT[3], 0, , , ],
-							backgroundColor: "rgba(63,103,126,1)",
-							hoverBackgroundColor: "rgba(50,90,100,1)"
-						},{
-							data: [, $scope.timingTask[1], , , ],
-							backgroundColor: "rgba(163,103,126,1)",
-							hoverBackgroundColor: "rgba(140,85,100,1)"
-						},{
-							data: [, $scope.timingTask[5], , , ],
-							backgroundColor: "rgba(63,203,226,1)",
-							hoverBackgroundColor: "rgba(46,185,235,1)"
-						},{
-							data: [, $scope.timingTask[3], , , ],
-							backgroundColor: "rgba(3,223,236,1)",
-							hoverBackgroundColor: "rgba(36,85,235,1)"
-						}]
-					},
-
-					options: barOptions_stacked,
-				});
-
-//				var chartTimingWorking = new Chart(document.getElementById("chartTimingWorking"), {
-//				type: 'bar',
-//				data: {
-//				labels: ["Release IT Timing Working", "Deploy/DBA Timing Working", "Test Timing Working", "Quick Fix Timing Working"],
-//				datasets: [
-//				{
-//				label: "Time working (hours)",
-//				backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-//				data: [$scope.timingReleaseIT[3],$scope.timingTask[1],$scope.timingTask[5],$scope.timingTask[3]]
-//				}
-//				]
-//				},
-//				options: {
-//				legend: { display: false },
-//				title: {
-//				display: true,
-//				text: ''
-//				}
-//				}
-//				});
-
-				$("#overlay2").hide("fast");
-				$("#overlayback2").hide("fast");
+					$("#overlay2").hide("fast");
+					$("#overlayback2").hide("fast");
 				}
 				else{
 					alert("Nessun rilascio trovato con l'id indicato");
 					$("#overlay2").hide("fast");
 					$("#overlayback2").hide("fast");
-						
+
 				}
 			});
 		}
@@ -730,12 +740,197 @@ app.controller('infoReleaseProgetto', function($scope, $http,$route) {
 	$scope.numRows = 1;
 
 	$scope.submitRelease = function(idPolarion) {
-		
+
 		if(typeof idPolarion == "undefined"){ 
 			alert("Campo id polarion obbligatorio")
 		}
 
 		else{
+
+			$scope.infoSviluppolength = 0;
+			$scope.infoMevlength = 0;
+			$scope.infoDefectlength = 0;
+			$scope.infoAnomalialength = 0;
+
+			var responseFinal;
+
+			$("#overlay2").show();
+			$("#overlayback2").show();
+			$('html, body').animate({scrollTop: '0px'}, 0);
+
+			$http.get('http://localhost:8080/SchedaRilasci/infoReleaseProgetto?idPolarion='+idPolarion).
+			then(function(response) {
+
+				responseFinal = response.data;
+
+				console.log("Id Polarion: "+idPolarion);
+
+				$scope.numRows=responseFinal["numRows"];
+
+				console.log("Righe: "+$scope.numRows);
+				if($scope.numRows !== 0){
+
+					$scope.infoGen=responseFinal["infoGenerali"];
+					$scope.infoStati=responseFinal["infoStati"];
+					$scope.infoDocumenti=responseFinal["infoDocumenti"];
+					$scope.infoSviluppo=responseFinal["infoProgettoSviluppo"];
+					$scope.infoMev=responseFinal["infoMev"];
+					$scope.infoDefect=responseFinal["infoDefect"];
+					$scope.infoDefectLength=$scope.infoDefect.length;
+					$scope.infoAnomalia=responseFinal["infoAnomalia"];
+
+					$scope.infoTotDefect = responseFinal["infoTotDefect"];
+					$scope.infoTotAnomalie = responseFinal["infoTotAnomalie"];
+
+					$scope.infoSviluppolength = $scope.infoSviluppo.length;
+					$scope.infoMevlength = $scope.infoMev.length;
+
+					for(var i = 0; i <= $scope.infoDefectlength; i ++){
+						$scope.infoDefectlength += $scope.infoDefect[i];
+					}
+
+					for(var i = 0; i <= $scope.infoAnomalialength; i ++){
+						$scope.infoAnomalialength += $scope.infoAnomalia[i];
+					}
+
+					var severityDefectRelease = new Chart(document.getElementById("severityDefectRelease"), {
+						type: 'doughnut',
+						data: {
+							labels: ["Critica", "Alta", "Media", "Bassa"],
+							datasets: [{
+								backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+								data: [$scope.infoDefect[0],$scope.infoDefect[1],$scope.infoDefect[2],$scope.infoDefect[3]]
+							}]
+						},
+						options: {
+							title: {
+								display: true,
+								text: 'Defect in Severity'
+							}
+						}
+					});
+
+					var priorityDefectRelease = new Chart(document.getElementById("priorityDefectRelease"), {
+						type: 'doughnut',
+						data: {
+							labels: ["Critica", "Alta", "Media", "Bassa", "Bassissima"],
+							datasets: [{
+								backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+								data: [$scope.infoDefect[4],$scope.infoDefect[5],$scope.infoDefect[6],$scope.infoDefect[7],$scope.infoDefect[8]]
+							}]
+						},
+						options: {
+							title: {
+								display: true,
+								text: 'Defect in Priority'
+							}
+						}
+					});
+
+					var resolutionDefectRelease = new Chart(document.getElementById("resolutionDefectRelease"), {
+						type: 'doughnut',
+						data: {
+							labels: ["Limiti Noti", "Risolti In It", "Riaperti", "Invalidi"],
+							datasets: [{
+								backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+								data: [$scope.infoDefect[9],$scope.infoDefect[10],$scope.infoDefect[11],$scope.infoDefect[12]]
+							}]
+						},
+						options: {
+							title: {
+								display: true,
+								text: 'Defect in Resolution'
+							}
+						}
+					});
+
+					var authorDefectRelease = new Chart(document.getElementById("authorDefectRelease"), {
+						type: 'doughnut',
+						data: {
+							labels: ["Tester", "Deploy", "DBA", "CM"],
+							datasets: [{
+								backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+								data: [$scope.infoDefect[13],$scope.infoDefect[14],$scope.infoDefect[15],$scope.infoDefect[16]]
+							}]
+						},
+						options: {
+							title: {
+								display: true,
+								text: 'Defect in Author'
+							}
+						}
+					});
+
+					var severityAnomaliaRelease = new Chart(document.getElementById("severityAnomaliaRelease"), {
+						type: 'doughnut',
+						data: {
+							labels: ["Critica", "Alta", "Media", "Bassa"],
+							datasets: [{
+								backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+								data: [$scope.infoAnomalia[0],$scope.infoAnomalia[1],$scope.infoAnomalia[2],$scope.infoAnomalia[3]]
+							}]
+						},
+						options: {
+							title: {
+								display: true,
+								text: 'Anomalia in Severity'
+							}
+						}
+					});
+
+					var priorityAnomaliaRelease = new Chart(document.getElementById("priorityAnomaliaRelease"), {
+						type: 'doughnut',
+						data: {
+							labels: ["Critica", "Alta", "Media", "Bassa", "Bassissima"],
+							datasets: [{
+								backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+								data: [$scope.infoAnomalia[4],$scope.infoAnomalia[5],$scope.infoAnomalia[6],$scope.infoAnomalia[7],$scope.infoAnomalia[8]]
+							}]
+						},
+						options: {
+							title: {
+								display: true,
+								text: 'Anomalia in Priority'
+							}
+						}
+					});
+
+
+					$("#overlay2").hide("fast");
+					$("#overlayback2").hide("fast");
+				}
+				else{
+					alert("Nessun rilascio trovato con l'id indicato");
+					$("#overlay2").hide("fast");
+					$("#overlayback2").hide("fast");
+				}
+
+
+			});
+
+		}
+		$scope.range = function(max, step) {
+			step = step || 1;
+			var input = [];
+			for (var i = 0; i <= max; i += step) {
+				input.push(i);
+			}
+			return input;
+		};
+
+	}
+});
+
+app.controller('infoReleaseProgettoDue' ,function($scope, $http, $route, $routeParams) {
+	console.log("sono nel 2");
+	$route.idPolarion = $routeParams.idReleaseProgetto;
+	console.log($route.idPolarion);
+
+	if(typeof $route.idPolarion == "undefined"){ 
+		alert("Campo id polarion obbligatorio")
+	}
+
+	else{
 
 		$scope.infoSviluppolength = 0;
 		$scope.infoMevlength = 0;
@@ -753,147 +948,148 @@ app.controller('infoReleaseProgetto', function($scope, $http,$route) {
 
 			responseFinal = response.data;
 
+			console.log("Id Polarion: "+idPolarion);
+
 			$scope.numRows=responseFinal["numRows"];
-			
+
 			console.log("Righe: "+$scope.numRows);
 			if($scope.numRows !== 0){
-			
-			$scope.infoGen=responseFinal["infoGenerali"];
-			$scope.infoStati=responseFinal["infoStati"];
-			$scope.infoDocumenti=responseFinal["infoDocumenti"];
-			$scope.infoSviluppo=responseFinal["infoProgettoSviluppo"];
-			$scope.infoMev=responseFinal["infoMev"];
-			$scope.infoDefect=responseFinal["infoDefect"];
-			$scope.infoDefectLength=$scope.infoDefect.length;
-			$scope.infoAnomalia=responseFinal["infoAnomalia"];
-			
-			$scope.infoTotDefect = responseFinal["infoTotDefect"];
-			$scope.infoTotAnomalie = responseFinal["infoTotAnomalie"];
 
-			$scope.infoSviluppolength = $scope.infoSviluppo.length;
-			$scope.infoMevlength = $scope.infoMev.length;
+				$scope.infoGen=responseFinal["infoGenerali"];
+				$scope.infoStati=responseFinal["infoStati"];
+				$scope.infoDocumenti=responseFinal["infoDocumenti"];
+				$scope.infoSviluppo=responseFinal["infoProgettoSviluppo"];
+				$scope.infoMev=responseFinal["infoMev"];
+				$scope.infoDefect=responseFinal["infoDefect"];
+				$scope.infoDefectLength=$scope.infoDefect.length;
+				$scope.infoAnomalia=responseFinal["infoAnomalia"];
 
-			for(var i = 0; i <= $scope.infoDefectlength; i ++){
-				$scope.infoDefectlength += $scope.infoDefect[i];
-			}
+				$scope.infoTotDefect = responseFinal["infoTotDefect"];
+				$scope.infoTotAnomalie = responseFinal["infoTotAnomalie"];
 
-			for(var i = 0; i <= $scope.infoAnomalialength; i ++){
-				$scope.infoAnomalialength += $scope.infoAnomalia[i];
-			}
-			console.log("Tot anom: "+$scope.infoAnomalialength);
+				$scope.infoSviluppolength = $scope.infoSviluppo.length;
+				$scope.infoMevlength = $scope.infoMev.length;
 
-			var severityDefectRelease = new Chart(document.getElementById("severityDefectRelease"), {
-				type: 'doughnut',
-				data: {
-					labels: ["Critica", "Alta", "Media", "Bassa"],
-					datasets: [{
-						backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-						data: [$scope.infoDefect[0],$scope.infoDefect[1],$scope.infoDefect[2],$scope.infoDefect[3]]
-					}]
-				},
-				options: {
-					title: {
-						display: true,
-						text: 'Defect in Severity'
-					}
+				for(var i = 0; i <= $scope.infoDefectlength; i ++){
+					$scope.infoDefectlength += $scope.infoDefect[i];
 				}
-			});
 
-			var priorityDefectRelease = new Chart(document.getElementById("priorityDefectRelease"), {
-				type: 'doughnut',
-				data: {
-					labels: ["Critica", "Alta", "Media", "Bassa", "Bassissima"],
-					datasets: [{
-						backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-						data: [$scope.infoDefect[4],$scope.infoDefect[5],$scope.infoDefect[6],$scope.infoDefect[7],$scope.infoDefect[8]]
-					}]
-				},
-				options: {
-					title: {
-						display: true,
-						text: 'Defect in Priority'
-					}
+				for(var i = 0; i <= $scope.infoAnomalialength; i ++){
+					$scope.infoAnomalialength += $scope.infoAnomalia[i];
 				}
-			});
 
-			var resolutionDefectRelease = new Chart(document.getElementById("resolutionDefectRelease"), {
-				type: 'doughnut',
-				data: {
-					labels: ["Limiti Noti", "Risolti In It", "Riaperti", "Invalidi"],
-					datasets: [{
-						backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-						data: [$scope.infoDefect[9],$scope.infoDefect[10],$scope.infoDefect[11],$scope.infoDefect[12]]
-					}]
-				},
-				options: {
-					title: {
-						display: true,
-						text: 'Defect in Resolution'
+				var severityDefectRelease = new Chart(document.getElementById("severityDefectRelease"), {
+					type: 'doughnut',
+					data: {
+						labels: ["Critica", "Alta", "Media", "Bassa"],
+						datasets: [{
+							backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+							data: [$scope.infoDefect[0],$scope.infoDefect[1],$scope.infoDefect[2],$scope.infoDefect[3]]
+						}]
+					},
+					options: {
+						title: {
+							display: true,
+							text: 'Defect in Severity'
+						}
 					}
-				}
-			});
+				});
 
-			var authorDefectRelease = new Chart(document.getElementById("authorDefectRelease"), {
-				type: 'doughnut',
-				data: {
-					labels: ["Tester", "Deploy", "DBA", "CM"],
-					datasets: [{
-						backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-						data: [$scope.infoDefect[13],$scope.infoDefect[14],$scope.infoDefect[15],$scope.infoDefect[16]]
-					}]
-				},
-				options: {
-					title: {
-						display: true,
-						text: 'Defect in Author'
+				var priorityDefectRelease = new Chart(document.getElementById("priorityDefectRelease"), {
+					type: 'doughnut',
+					data: {
+						labels: ["Critica", "Alta", "Media", "Bassa", "Bassissima"],
+						datasets: [{
+							backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+							data: [$scope.infoDefect[4],$scope.infoDefect[5],$scope.infoDefect[6],$scope.infoDefect[7],$scope.infoDefect[8]]
+						}]
+					},
+					options: {
+						title: {
+							display: true,
+							text: 'Defect in Priority'
+						}
 					}
-				}
-			});
+				});
 
-			var severityAnomaliaRelease = new Chart(document.getElementById("severityAnomaliaRelease"), {
-				type: 'doughnut',
-				data: {
-					labels: ["Critica", "Alta", "Media", "Bassa"],
-					datasets: [{
-						backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-						data: [$scope.infoAnomalia[0],$scope.infoAnomalia[1],$scope.infoAnomalia[2],$scope.infoAnomalia[3]]
-					}]
-				},
-				options: {
-					title: {
-						display: true,
-						text: 'Anomalia in Severity'
+				var resolutionDefectRelease = new Chart(document.getElementById("resolutionDefectRelease"), {
+					type: 'doughnut',
+					data: {
+						labels: ["Limiti Noti", "Risolti In It", "Riaperti", "Invalidi"],
+						datasets: [{
+							backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+							data: [$scope.infoDefect[9],$scope.infoDefect[10],$scope.infoDefect[11],$scope.infoDefect[12]]
+						}]
+					},
+					options: {
+						title: {
+							display: true,
+							text: 'Defect in Resolution'
+						}
 					}
-				}
-			});
+				});
 
-			var priorityAnomaliaRelease = new Chart(document.getElementById("priorityAnomaliaRelease"), {
-				type: 'doughnut',
-				data: {
-					labels: ["Critica", "Alta", "Media", "Bassa", "Bassissima"],
-					datasets: [{
-						backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-						data: [$scope.infoAnomalia[4],$scope.infoAnomalia[5],$scope.infoAnomalia[6],$scope.infoAnomalia[7],$scope.infoAnomalia[8]]
-					}]
-				},
-				options: {
-					title: {
-						display: true,
-						text: 'Anomalia in Priority'
+				var authorDefectRelease = new Chart(document.getElementById("authorDefectRelease"), {
+					type: 'doughnut',
+					data: {
+						labels: ["Tester", "Deploy", "DBA", "CM"],
+						datasets: [{
+							backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+							data: [$scope.infoDefect[13],$scope.infoDefect[14],$scope.infoDefect[15],$scope.infoDefect[16]]
+						}]
+					},
+					options: {
+						title: {
+							display: true,
+							text: 'Defect in Author'
+						}
 					}
-				}
-			});
-			
-			
-			$("#overlay2").hide("fast");
-			$("#overlayback2").hide("fast");
+				});
+
+				var severityAnomaliaRelease = new Chart(document.getElementById("severityAnomaliaRelease"), {
+					type: 'doughnut',
+					data: {
+						labels: ["Critica", "Alta", "Media", "Bassa"],
+						datasets: [{
+							backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+							data: [$scope.infoAnomalia[0],$scope.infoAnomalia[1],$scope.infoAnomalia[2],$scope.infoAnomalia[3]]
+						}]
+					},
+					options: {
+						title: {
+							display: true,
+							text: 'Anomalia in Severity'
+						}
+					}
+				});
+
+				var priorityAnomaliaRelease = new Chart(document.getElementById("priorityAnomaliaRelease"), {
+					type: 'doughnut',
+					data: {
+						labels: ["Critica", "Alta", "Media", "Bassa", "Bassissima"],
+						datasets: [{
+							backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+							data: [$scope.infoAnomalia[4],$scope.infoAnomalia[5],$scope.infoAnomalia[6],$scope.infoAnomalia[7],$scope.infoAnomalia[8]]
+						}]
+					},
+					options: {
+						title: {
+							display: true,
+							text: 'Anomalia in Priority'
+						}
+					}
+				});
+
+
+				$("#overlay2").hide("fast");
+				$("#overlayback2").hide("fast");
 			}
 			else{
 				alert("Nessun rilascio trovato con l'id indicato");
 				$("#overlay2").hide("fast");
 				$("#overlayback2").hide("fast");
 			}
-			
+
 
 		});
 
@@ -906,8 +1102,6 @@ app.controller('infoReleaseProgetto', function($scope, $http,$route) {
 		}
 		return input;
 	};
-
-	}
 });
 
 app.controller('infoReleaseFiltri', function($scope, $http, $route) {
@@ -989,19 +1183,19 @@ app.controller('infoReleaseFiltri', function($scope, $http, $route) {
 			responseFinal = response.data;
 
 			$scope.IsVisible2 = $scope.IsVisible2 ? false : true;
-			
+
 			console.log("contesto: "+contesto);
 			$scope.rilasciContesto=responseFinal["rilasciContesto"];
-			
+
 			$("#overlay2").hide("fast");
 			$("#overlayback2").hide("fast");
 		});
 	}
-	
+
 	$scope.submitReleaseSoloArea = function(codiceArea) {
 
 		var responseFinal;
-		
+
 		$scope.IsVisible3 = false;
 
 		$("#overlay2").show();
@@ -1013,13 +1207,13 @@ app.controller('infoReleaseFiltri', function($scope, $http, $route) {
 			responseFinal = response.data;
 
 			$scope.IsVisible3 = $scope.IsVisible3 ? false : true;
-			
+
 			$scope.rilasciPerAree=responseFinal["rilasciAree"];
-			
+
 			$("#overlay2").hide("fast");
 			$("#overlayback2").hide("fast");
 		});
-		
+
 	}
 
 	$scope.range = function(max, step) {
