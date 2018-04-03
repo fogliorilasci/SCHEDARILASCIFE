@@ -1,11 +1,16 @@
 .overlay2 {
 	text-align: left;
-	position: relative;
-	left: 40%;
-	width: 100%;
-	height: 100%;
+	position: absolute;
+	left: calc(50% - 120px);
+	top: 120px;
+	width: 240px;
+	height: 240px;
 	z-index: 10;
 	display: none;
+}
+
+.overlay2 > img{
+	width: 100%;
 }
 
 .overlayback2 {
