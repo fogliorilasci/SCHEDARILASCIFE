@@ -1490,6 +1490,8 @@ app.controller('infoReleaseFiltri', function($scope, $http, $route) {
 
 		$scope.IsVisible3 = false;
 
+		console.log("IsVisbile before: "+$scope.IsVisible3);
+		
 		$("#overlay2").show();
 		$("#overlayback2").show();
 		$('html, body').animate({scrollTop: '0px'}, 0);
@@ -1499,6 +1501,8 @@ app.controller('infoReleaseFiltri', function($scope, $http, $route) {
 			responseFinal = response.data;
 
 			$scope.IsVisible3 = $scope.IsVisible3 ? false : true;
+			
+			console.log("IsVisbile after: "+$scope.IsVisible3);
 
 			$scope.rilasciPerAree=responseFinal["rilasciAree"];
 
