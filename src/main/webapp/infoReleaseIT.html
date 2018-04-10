@@ -62,6 +62,10 @@
 												ng-click="submitRelease(idPolarion)">
 												<i class="fa fa-search" aria-hidden="true"></i> Cerca
 											</button>
+											<button class="btn btn-warn" type="button"
+												onClick="window.location.reload()">
+												<i aria-hidden="true"></i> Reset
+											</button>
 										</span>
 									</div>
 								</div>
@@ -82,53 +86,45 @@
 
 							<tbody>
 								<tr>
-									<th scope="row">
 									<td><b>Progetto Polarion: </b>{{infoGen[1]}}</td>
 									<td><b>Data Inizio: </b>{{infoGen[7]}}</td>
 								</tr>
 								<tr>
-									<th scope="row">
 									<td><b>Repo: </b>{{infoGen[3]}}</td>
 									<td><b>Data Fine: </b>{{infoGen[8]}}</td>
 								</tr>
 								<tr>
-									<th scope="row">
 									<td><b>Titolo: </b>{{infoGen[4]}}</td>
 									<td><b>Data Creazione:</b> {{infoGen[9]}}</td>
 								</tr>
 								<tr>
 									<input type="hidden" value="{{infoGen[10]}}" id="idPolarion">
-									<th scope="row">
 									<td><b>Priority: </b>{{infoGen[5]}}</td>
-<!-- 									<td><b>Release di Progetto: </b> <a -->
-<!-- 										ng-href="#!/infoReleaseProgetto"> -->
-<!-- 											<button ng-click="submitRelease(infoGen[10])"> -->
-<!-- 												{{infoGen[10]}}</button> -->
-<!-- 									</a></td> -->
+									<!-- 									<td><b>Release di Progetto: </b> <a -->
+									<!-- 										ng-href="#!/infoReleaseProgetto"> -->
+									<!-- 											<button ng-click="submitRelease(infoGen[10])"> -->
+									<!-- 												{{infoGen[10]}}</button> -->
+									<!-- 									</a></td> -->
 
-								<td><b>Release di Progetto: </b>
-<!-- 									<button ng-controller="infoReleaseProgetto" ng-click="submitRelease(idPolarion)">{{infoGen[10]}}</button> -->
-									<a id="buttonIdPolarion" ng-show="infoGen[10]" class="btn btn-success ng-binding" href="#!/infoReleaseProgetto/{{infoGen[10]}}">{{infoGen[10]}}</a></td>
+									<td><b>Release di Progetto: </b> <!-- 									<button ng-controller="infoReleaseProgetto" ng-click="submitRelease(idPolarion)">{{infoGen[10]}}</button> -->
+										<a id="buttonIdPolarion" ng-show="infoGen[10]"
+										class="btn btn-success ng-binding"
+										href="#!/infoReleaseProgetto/{{infoGen[10]}}">{{infoGen[10]}}</a></td>
 
 								</tr>
 								<tr>
-									<th scope="row">
-
-
-										<td><b>Severity: </b>{{infoGen[6]}}</td>
+									<td><b>Severity: </b>{{infoGen[6]}}</td>
 									<td><b>Info QuickFix:</b>
 										<table class="table table-striped">
 
 											<tbody>
 												<tr>
 													<th scope="row">
-													
 													<td>Nr QF</td>
 													<td>Time in QF</td>
 												</tr>
 												<tr>
 													<th scope="row">
-													
 													<td>{{infoGen[11]}}</td>
 													<td>{{infoGen[12]}}</td>
 												</tr>
@@ -167,143 +163,136 @@
 
 
 				<br>
-				<!-- STATI --><div class="card">
+				<!-- STATI -->
+				<div class="card">
 
-											<h3 class="card-header" data-toggle="collapse"
-												data-target="#stati">
-												Timing
-												<button class="btn btn-secondary float-right" type="button"
-													data-toggle="collapse" data-target="#stati"
-													aria-controls="navbarToggleExternalContent"
-													aria-expanded="false" aria-label="Toggle navigation">
-													<i class="fa fa-bars"></i>
-												</button>
-											</h3>
-											<div id="timing" class="collapse">
-												<div class="card-block" style="overflow-x: auto;"
-													ng-controller="infoReleaseIT">
+					<h3 class="card-header" data-toggle="collapse" data-target="#stati">
+						Timing
+						<button class="btn btn-secondary float-right" type="button"
+							data-toggle="collapse" data-target="#stati"
+							aria-controls="navbarToggleExternalContent" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<i class="fa fa-bars"></i>
+						</button>
+					</h3>
+					<div id="timing" class="collapse">
+						<div class="card-block" style="overflow-x: auto;"
+							ng-controller="infoReleaseIT">
 
-													<div class="box-inliner">
-														<label class="switch"><input
-															ng-model="checkedSlider2" id="checkedSlider2"
-															type="checkbox"> <span class="slider"></span> </label>
-														<p>
-															<b>Elapsed Time/Effort:</b>
-														</p>
-													</div>
-													<!-- 							<div id="chartTiming" style="height: 370px; max-width: 920px; margin: 0px auto;"></div> -->
+							<div class="box-inliner">
+								<label class="switch"><input ng-model="checkedSlider2"
+									id="checkedSlider2" type="checkbox"> <span
+									class="slider"></span> </label>
+								<p>
+									<b>Elapsed Time/Effort:</b>
+								</p>
+							</div>
+							<!-- 							<div id="chartTiming" style="height: 370px; max-width: 920px; margin: 0px auto;"></div> -->
 
-													<div id="timing" class="collapse">
-														<div class="card-block" style="overflow-x: auto;">
-															<div id="chartTiming"
-																style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
-															<div
-																style="width: 200px; height: 30px; background: #325A64;">
-																Release IT Timing</div>
-															<br>
-															<div
-																style="width: 200px; height: 30px; background: #8C5564;">
-																Deploy+DBA Timing</div>
-															<br>
-															<div
-																style="width: 200px; height: 30px; background: #2EB9EB;">
-																Test Timing</div>
-															<br>
-															<div
-																style="width: 200px; height: 30px; background: #2455EB;">
-																Quick Fix Timing</div>
-															<br>
-															<canvas id="chartTiming" ng-hide="checkedSlider2"> </canvas>
-															<canvas id="chartTimingWorking" ng-hide="!checkedSlider2"> </canvas>
-														</div>
-													</div>
+							<div id="timing" class="collapse">
+								<div class="card-block" style="overflow-x: auto;">
+									
+									<div style="width: 200px; height: 30px; background: #325A64;">
+										Release IT Timing</div>
+									<br>
+									<div style="width: 200px; height: 30px; background: #8C5564;">
+										Deploy+DBA Timing</div>
+									<br>
+									<div style="width: 200px; height: 30px; background: #2EB9EB;">
+										Test Timing</div>
+									<br>
+									<div style="width: 200px; height: 30px; background: #2455EB;">
+										Quick Fix Timing</div>
+									<br>
+									<canvas id="chartTiming" ng-hide="checkedSlider2"> </canvas>
+									<canvas id="chartTimingWorking" ng-hide="!checkedSlider2"> </canvas>
+								</div>
+							</div>
 
-												</div>
-											</div>
-											<br> <br>
-											<div id="stati" class="collapse">
-												<div class="card-block" style="overflow-x: auto;"
-													ng-controller="infoReleaseIT">
-													<div class="box-inliner">
-														<label class="switch"><input
-															ng-model="checkedSlider" type="checkbox"> <span
-															class="slider"></span> </label>
-														<p>
-															<b>Time Reale/Time Lavorato:</b>
-														</p>
-													</div>
-													<table class="table table-striped">
-														<thead>
-															<tr>
-																<th>Nome Stato</th>
-																<!-- 										<th>DA</th> -->
-																<!-- 										<th>A</th> -->
-																<th class="lavorato" ng-if="checkedSlider">Time
-																	Lavorato</th>
-																<th class="reale" ng-if="!checkedSlider">Time Reale</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr ng-repeat="num in range(stati.length, 5)">
-																<td>{{stati[num]}}</td>
-																<!-- 										<td>{{stati[num+1]}}</td> -->
-																<!-- 										<td>{{stati[num+2]}}</td> -->
-																<td class="lavorato" ng-if="checkedSlider">{{stati[num+3]}}</td>
-																<td class="reale" ng-if="!checkedSlider">{{stati[num+4]}}</td>
-															</tr>
-														</tbody>
-													</table>
-													<span><b>Numero Rifiutato: </b>
-														{{numeroRifiutati[0]}}</span>
-												</div>
-												<br>
-											</div>
-										</div> <br> <!-- TASK -->
-										<div class="card">
-											<h3 class="card-header" data-toggle="collapse"
-												data-target="#task">
-												Task
-												<button class="btn btn-secondary float-right" type="button"
-													data-toggle="collapse" data-target="task"
-													aria-controls="navbarToggleExternalContent"
-													aria-expanded="false" aria-label="Toggle navigation">
-													<i class="fa fa-bars"></i>
-												</button>
-											</h3>
-											<div id="task" class="collapse">
-												<div class="card-block" style="overflow-x: auto;"
-													ng-controller="stato">
+						</div>
+					</div>
+					<br> <br>
+					<div id="stati" class="collapse">
+						<div class="card-block" style="overflow-x: auto;"
+							ng-controller="infoReleaseIT">
+							<div class="box-inliner">
+								<label class="switch"><input ng-model="checkedSlider"
+									type="checkbox"> <span class="slider"></span> </label>
+								<p>
+									<b>Time Reale/Time Lavorato:</b>
+								</p>
+							</div>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Nome Stato</th>
+										<!-- 										<th>DA</th> -->
+										<!-- 										<th>A</th> -->
+										<th class="lavorato" ng-if="checkedSlider">Time Lavorato</th>
+										<th class="reale" ng-if="!checkedSlider">Time Reale</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="num in range(stati.length, 5)">
+										<td>{{stati[num]}}</td>
+										<!-- 										<td>{{stati[num+1]}}</td> -->
+										<!-- 										<td>{{stati[num+2]}}</td> -->
+										<td class="lavorato" ng-if="checkedSlider">{{stati[num+3]}}</td>
+										<td class="reale" ng-if="!checkedSlider">{{stati[num+4]}}</td>
+									</tr>
+								</tbody>
+							</table>
+							<span><b>Numero Rifiutato: </b> {{numeroRifiutati[0]}}</span>
+						</div>
+						<br>
+					</div>
+				</div>
+				<br>
+				<!-- TASK -->
+				<div class="card">
+					<h3 class="card-header" data-toggle="collapse" data-target="#task">
+						Task
+						<button class="btn btn-secondary float-right" type="button"
+							data-toggle="collapse" data-target="task"
+							aria-controls="navbarToggleExternalContent" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<i class="fa fa-bars"></i>
+						</button>
+					</h3>
+					<div id="task" class="collapse">
+						<div class="card-block" style="overflow-x: auto;"
+							ng-controller="stato">
 
-													<table class="table table-striped">
-														<thead>
-															<tr>
-																<th>ID Task</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr ng-repeat="idTask in infoTaskId">
-																<td>{{idTask}}</td>
-															</tr>
-														</tbody>
-													</table>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>ID Task</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="idTask in infoTaskId">
+										<td>{{idTask}}</td>
+									</tr>
+								</tbody>
+							</table>
 
-													<ul class="nav nav-tabs">
-														<li class="nav-item" ng-hide="taskDeploylength == '0'"><a
-															class="nav-link active" data-target="#deploy"
-															data-toggle="tab">Deploy</a></li>
-														<li class="nav-item" ng-hide="taskDbalength == '0'"><a
-															class="nav-link" data-target="#dba" data-toggle="tab">Dba</a></li>
-														<li class="nav-item" ng-hide="taskTestlength == '0'"><a
-															class="nav-link" data-target="#test" data-toggle="tab">Test</a></li>
-														<li class="nav-item" ng-hide="taskContrDoclength == '0'"><a
-															class="nav-link" data-target="#controlloDoc"
-															data-toggle="tab">Controllo Documentale</a><li class="nav-item" ng-hide="taskDataPreplength == '0'"><a
-															class="nav-link" data-target="#dataPreparation"
-															data-toggle="tab">Data Preparation</a></li>
+							<ul class="nav nav-tabs">
+								<li class="nav-item" ng-hide="taskDeploylength == '0'"><a
+									class="nav-link active" data-target="#deploy" data-toggle="tab">Deploy</a></li>
+								<li class="nav-item" ng-hide="taskDbalength == '0'"><a
+									class="nav-link" data-target="#dba" data-toggle="tab">Dba</a></li>
+								<li class="nav-item" ng-hide="taskTestlength == '0'"><a
+									class="nav-link" data-target="#test" data-toggle="tab">Test</a></li>
+								<li class="nav-item" ng-hide="taskContrDoclength == '0'"><a
+									class="nav-link" data-target="#controlloDoc" data-toggle="tab">Controllo
+										Documentale</a>
+								<li class="nav-item" ng-hide="taskDataPreplength == '0'"><a
+									class="nav-link" data-target="#dataPreparation"
+									data-toggle="tab">Data Preparation</a></li>
 							</ul>
 							<div id="myTabContent" class="tab-content">
 								<div class="tab-pane active" id="deploy"
-															ng-hide="taskDeploylength == '0'">
+									ng-hide="taskDeploylength == '0'">
 									<table class="table table-striped">
 										<thead>
 											<tr>
@@ -326,7 +315,7 @@
 									</table>
 								</div>
 								<div class="tab-pane fade" id="dba"
-															ng-hide="taskDbalength == '0'">
+									ng-hide="taskDbalength == '0'">
 									<table class="table table-striped">
 										<thead>
 											<tr>
@@ -350,7 +339,7 @@
 								</div>
 
 								<div class="tab-pane fade" id="test"
-															ng-hide="taskTestlength == '0'">
+									ng-hide="taskTestlength == '0'">
 									<table class="table table-striped">
 										<thead>
 											<tr>
@@ -373,7 +362,7 @@
 									</table>
 								</div>
 								<div class="tab-pane fade" id="controlloDoc"
-															ng-hide="taskContrDoclength == '0'">
+									ng-hide="taskContrDoclength == '0'">
 									<table class="table table-striped">
 										<thead>
 											<tr>
@@ -397,7 +386,7 @@
 								</div>
 
 								<div class="tab-pane fade" id="dataPreparation"
-															ng-hide="taskDataPreplength == '0'">
+									ng-hide="taskDataPreplength == '0'">
 									<table class="table table-striped">
 										<thead>
 											<tr>
@@ -430,18 +419,18 @@
 				<div class="card">
 
 					<h3 class="card-header" data-toggle="collapse"
-												data-target="#testCase">
+						data-target="#testCase">
 						Test Case
 						<button class="btn btn-secondary float-right" type="button"
-													data-toggle="collapse" data-target="#documenti"
-													aria-controls="navbarToggleExternalContent"
-													aria-expanded="false" aria-label="Toggle navigation">
+							data-toggle="collapse" data-target="#documenti"
+							aria-controls="navbarToggleExternalContent" aria-expanded="false"
+							aria-label="Toggle navigation">
 							<i class="fa fa-bars"></i>
 						</button>
 					</h3>
 					<div id="testCase" class="collapse">
 						<div class="card-block" style="overflow-x: auto;"
-													ng-controller="stato">
+							ng-controller="stato">
 
 
 							<table class="table table-striped">
@@ -533,18 +522,18 @@
 				<div class="card" ng-hide="testerslength == '0'">
 
 					<h3 class="card-header" data-toggle="collapse"
-												data-target="#autore">
+						data-target="#autore">
 						Autore
 						<button class="btn btn-secondary float-right" type="button"
-													data-toggle="collapse" data-target="#documenti"
-													aria-controls="navbarToggleExternalContent"
-													aria-expanded="false" aria-label="Toggle navigation">
+							data-toggle="collapse" data-target="#documenti"
+							aria-controls="navbarToggleExternalContent" aria-expanded="false"
+							aria-label="Toggle navigation">
 							<i class="fa fa-bars"></i>
 						</button>
 					</h3>
 					<div id="autore" class="collapse">
 						<div class="card-block" style="overflow-x: auto;"
-													ng-controller="stato">
+							ng-controller="stato">
 
 							<div style="display: inline;">
 								&nbsp;Sono stati impiegati <strong>{{numeroTesterImpiegati[0]}}</strong>
@@ -581,18 +570,18 @@
 				<div class="card" ng-hide="CLSizelength == '0'">
 
 					<h3 class="card-header" data-toggle="collapse"
-												data-target="#checklist">
+						data-target="#checklist">
 						Checklist
 						<button class="btn btn-secondary float-right" type="button"
-													data-toggle="collapse" data-target="#documenti"
-													aria-controls="navbarToggleExternalContent"
-													aria-expanded="false" aria-label="Toggle navigation">
+							data-toggle="collapse" data-target="#documenti"
+							aria-controls="navbarToggleExternalContent" aria-expanded="false"
+							aria-label="Toggle navigation">
 							<i class="fa fa-bars"></i>
 						</button>
 					</h3>
 					<div id="checklist" class="collapse">
 						<div class="card-block" style="overflow-x: auto;"
-													ng-controller="stato">
+							ng-controller="stato">
 
 							<div style="display: inline;">
 								Sono state runnate <strong> {{CLSize[0]}}</strong> CL
@@ -644,8 +633,7 @@
 						</div>
 					</div>
 				</div>
-				<br>
-				<br>
+				<br> <br>
 
 			</div>
 		</div>

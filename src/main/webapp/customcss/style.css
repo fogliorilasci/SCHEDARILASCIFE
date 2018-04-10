@@ -25,3 +25,7 @@
 	z-index: 5;
 	display: none;
 }
+
+.table {
+	table-layout: fixed;
+}

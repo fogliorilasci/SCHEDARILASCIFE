@@ -72,7 +72,10 @@
 												id="bottoneCerca">
 												<i class="fa fa-search" aria-hidden="true"></i> Cerca
 											</button>
-
+											<button class="btn btn-warn" type="button"
+												onClick="window.location.reload()">
+												<i aria-hidden="true"></i> Reset
+											</button>
 										</span>
 									</div>
 								</div>
@@ -99,33 +102,28 @@
 						<table class="table table-striped">
 							<tbody>
 								<tr>
-									<th scope="row">
 									<td><b>Progetto Polarion: </b>{{infoGen[1]}}</td>
 								</tr>
 								<tr>
-									<th scope="row">
-									<td><b>Release Integrazione Tecnica: </b>
-									<a id="buttonIdPolarion" ng-show="idReleaseIt" class="btn btn-success ng-binding" href="#!/infoReleaseIT/{{idReleaseIt}}">{{idReleaseIt}}</a></td>
-									
+									<td><b>Release Integrazione Tecnica: </b> <a
+										id="buttonIdPolarion" ng-show="idReleaseIt"
+										class="btn btn-success ng-binding"
+										href="#!/infoReleaseIT/{{idReleaseIt}}">{{idReleaseIt}}</a></td>
+
 								</tr>
 								<tr>
-									<th scope="row">
 									<td><b>Applicativo: </b>{{infoGen[2]}}</td>
 								</tr>
 								<tr>
-									<th scope="row">
 									<td><b>Versione: </b>{{infoGen[3]}}</td>
 								</tr>
 								<tr>
-									<th scope="row">
 									<td><b>Link: </b>{{infoGen[4]}}</td>
 								</tr>
 								<tr>
-									<th scope="row">
 									<td><b>Repository: </b>{{infoGen[5]}}</td>
 								</tr>
 								<tr>
-									<th scope="row">
 									<td><b>Area di appartenenza: </b>{{infoGen[6]}}</td>
 								</tr>
 								<!-- 								<tr> -->
@@ -316,10 +314,10 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</div>
 
-
+	<br> <br>
 
 	<!-- PROGETTO MEV -->
 	<input type="hidden" value="{{infoMevlength}}">
