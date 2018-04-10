@@ -759,7 +759,7 @@ app.controller('infoReleaseITDue', function($scope, $http, $route, $routeParams)
 	//angular.element('#bottoneCerca').triggerHandler('click'); 
 	$scope.submitRelease = submitRelease($scope.idReleaseIt);
 	function submitRelease(idReleaseIt) {
-//	$scope.submitRelease = function(idPolarion) {
+//		$scope.submitRelease = function(idPolarion) {
 
 		if(typeof idPolarion == "undefined"){ 
 			alert("Campo id polarion obbligatorio")
@@ -1039,6 +1039,8 @@ app.controller('infoReleaseProgetto', function($scope, $http,$route) {
 			$("#overlayback2").show();
 			$('html, body').animate({scrollTop: '0px'}, 0);
 
+			console.log()
+
 			$http.get('http://localhost:8080/SchedaRilasci/infoReleaseProgetto?idPolarion='+idPolarion).
 			then(function(response) {
 
@@ -1065,7 +1067,7 @@ app.controller('infoReleaseProgetto', function($scope, $http,$route) {
 
 					$scope.infoSviluppolength = $scope.infoSviluppo.length;
 					$scope.infoMevlength = $scope.infoMev.length;
-					
+
 					$scope.idReleaseIt = responseFinal["idReleaseIt"];
 
 					for(var i = 0; i <= $scope.infoDefectlength; i ++){
@@ -1256,7 +1258,7 @@ app.controller('infoReleaseProgettoDue' ,function($scope, $http, $route, $routeP
 
 					$scope.infoSviluppolength = $scope.infoSviluppo.length;
 					$scope.infoMevlength = $scope.infoMev.length;
-					
+
 					$scope.idReleaseIt = responseFinal["idReleaseIt"];
 
 					for(var i = 0; i <= $scope.infoDefectlength; i ++){
@@ -1396,7 +1398,7 @@ app.controller('infoReleaseProgettoDue' ,function($scope, $http, $route, $routeP
 	};
 });
 
-app.controller('infoReleaseFiltri', function($scope, $http, $route) {
+app.controller('infoReleaseFiltri', function($scope, $http, $route, $filter) {
 
 	$scope.sizeAree = 0;
 
@@ -1439,20 +1441,52 @@ app.controller('infoReleaseFiltri', function($scope, $http, $route) {
 		$("#overlayback2").show();
 		$('html, body').animate({scrollTop: '0px'}, 0);
 
-		$http.get('http://localhost:8080/SchedaRilasci/getRilasciApplicativo?applicativo='+applicativo).
-		then(function(response) {
-			responseFinal = response.data;
+//		$http.get('http://localhost:8080/SchedaRilasci/getRilasciApplicativo?applicativo='+applicativo).
+//		then(function(response) {
+//		responseFinal = response.data;
 
-			$scope.IsVisible = $scope.IsVisible ? false : true;
+//		$scope.IsVisible = $scope.IsVisible ? false : true;
 
-			console.log("Applicativo: "+applicativo);
-			$scope.rilasciApplicativo=responseFinal["rilasciApplicativo"];
-			$scope.rilasciApplicativolength = $scope.rilasciApplicativo.length;
-			console.log("Size:"+$scope.rilasciApplicativolength);
+//		console.log("Applicativo: "+applicativo);
+//		$scope.rilasciApplicativo=responseFinal["rilasciApplicativo"];
+//		$scope.rilasciApplicativolength = $scope.rilasciApplicativo.length;
+//		console.log("Size:"+$scope.rilasciApplicativolength);
 
-			$("#overlay2").hide("fast");
-			$("#overlayback2").hide("fast");
+//		$("#overlay2").hide("fast");
+//		$("#overlayback2").hide("fast");
 
+//		});
+
+		$scope.IsVisible = $scope.IsVisible ? false : true;
+
+		$(document).ready(function() {
+
+			var value = $.get( "http://localhost:8080/SchedaRilasci/getRilasciApplicativo?applicativo="+applicativo, function( response ) {
+
+				console.log(response);
+				console.log("Visibility: "+$scope.IsVisible);
+
+				$('#tableApplicativo').DataTable({
+					"bProcessing": true,
+					"bLengthChange": false,
+					"data": response, // <-- your array of objects
+					"columns": 
+						[
+						 {"data": "ID Polarion"}, // <-- which values to use inside object
+						 {"data": "Titolo"},
+						 {"data": "Data Creazione"},
+						 {"data": "Data Aggiornamento"}
+						 ],
+						 "paging":   true,
+						 "ordering": false,
+						 "pageLength": 10,
+
+				});
+
+				$("#overlay2").hide("fast");
+				$("#overlayback2").hide("fast");
+
+			});
 		});
 
 
@@ -1470,18 +1504,51 @@ app.controller('infoReleaseFiltri', function($scope, $http, $route) {
 		$("#overlayback2").show();
 		$('html, body').animate({scrollTop: '0px'}, 0);
 
-		$http.get('http://localhost:8080/SchedaRilasci/getRilasciContesto?contesto='+contesto).
-		then(function(response) {
-			responseFinal = response.data;
+//		$http.get('http://localhost:8080/SchedaRilasci/getRilasciContesto?contesto='+contesto).
+//		then(function(response) {
+//		responseFinal = response.data;
 
-			$scope.IsVisible2 = $scope.IsVisible2 ? false : true;
+//		$scope.IsVisible2 = $scope.IsVisible2 ? false : true;
 
-			console.log("contesto: "+contesto);
-			$scope.rilasciContesto=responseFinal["rilasciContesto"];
+//		console.log("contesto: "+contesto);
+//		$scope.rilasciContesto=responseFinal["rilasciContesto"];
 
-			$("#overlay2").hide("fast");
-			$("#overlayback2").hide("fast");
+//		$("#overlay2").hide("fast");
+//		$("#overlayback2").hide("fast");
+//		});
+
+		$scope.IsVisible2 = $scope.IsVisible2 ? false : true;
+
+		$(document).ready(function() {
+
+			var value = $.get( "http://localhost:8080/SchedaRilasci/getRilasciContesto?contesto="+contesto, function( response ) {
+
+				console.log(response);
+				console.log("Visibility: "+$scope.IsVisible2);
+
+				$('#tableContesto').DataTable({
+					"bProcessing": true,
+					"bLengthChange": false,
+					"data": response, // <-- your array of objects
+					"columns": 
+						[
+						 {"data": "ID Polarion"}, // <-- which values to use inside object
+						 {"data": "Titolo"},
+						 {"data": "Data Creazione"},
+						 {"data": "Data Aggiornamento"}
+						 ],
+						 "paging":   true,
+						 "ordering": false,
+						 "pageLength": 10,
+
+				});
+
+				$("#overlay2").hide("fast");
+				$("#overlayback2").hide("fast");
+
+			});
 		});
+
 	}
 
 	$scope.submitReleaseSoloArea = function(codiceArea) {
@@ -1491,23 +1558,55 @@ app.controller('infoReleaseFiltri', function($scope, $http, $route) {
 		$scope.IsVisible3 = false;
 
 		console.log("IsVisbile before: "+$scope.IsVisible3);
-		
+
 		$("#overlay2").show();
 		$("#overlayback2").show();
 		$('html, body').animate({scrollTop: '0px'}, 0);
 
-		$http.get('http://localhost:8080/SchedaRilasci/getRilasciFromArea?codiceArea='+codiceArea).
-		then(function(response) {
-			responseFinal = response.data;
+//		$http.get('http://localhost:8080/SchedaRilasci/getRilasciFromArea?codiceArea='+codiceArea).
+//		then(function(response) {
+//		responseFinal = response.data;
 
-			$scope.IsVisible3 = $scope.IsVisible3 ? false : true;
-			
-			console.log("IsVisbile after: "+$scope.IsVisible3);
+//		$scope.IsVisible3 = $scope.IsVisible3 ? false : true;
 
-			$scope.rilasciPerAree=responseFinal["rilasciAree"];
+//		console.log("IsVisbile after: "+$scope.IsVisible3);
 
-			$("#overlay2").hide("fast");
-			$("#overlayback2").hide("fast");
+//		$scope.rilasciPerAree=responseFinal["rilasciAree"];
+
+//		$("#overlay2").hide("fast");
+//		$("#overlayback2").hide("fast");
+//		});
+
+		$scope.IsVisible3 = $scope.IsVisible3 ? false : true;
+
+		$(document).ready(function() {
+
+			var value = $.get( "http://localhost:8080/SchedaRilasci/getRilasciFromArea?codiceArea="+codiceArea, function( response ) {
+
+				console.log(response);
+				console.log("Visibility: "+$scope.IsVisible3);
+
+				$('#tableArea').DataTable({
+					"bProcessing": true,
+					"bLengthChange": false,
+					"data": response, // <-- your array of objects
+					"columns": 
+						[
+						 {"data": "ID Polarion"}, // <-- which values to use inside object
+						 {"data": "Titolo"},
+						 {"data": "Data Creazione"},
+						 {"data": "Data Aggiornamento"}
+						 ],
+						 "paging":   true,
+						 "ordering": false,
+						 "pageLength": 10,
+
+				});
+
+				$("#overlay2").hide("fast");
+				$("#overlayback2").hide("fast");
+
+			});
 		});
 
 	}
@@ -1534,4 +1633,20 @@ app.controller('infoReleaseFiltri', function($scope, $http, $route) {
 		ManualBatch.runPublicationBatch(invoice);       
 	}
 
+});
+
+
+$(document).ready(function(){
+	console.log("1");
+	$("#search-area").keyup(function(){
+		console.log("2");
+		_this = this;
+		$.each($("#table_area.areaId").find("tr.dati"), function() {
+			console.log("3");
+			if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) == -1)
+				$(this).hide();
+			else
+				$(this).show();                
+		});
+	});
 });

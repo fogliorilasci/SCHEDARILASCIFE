@@ -184,28 +184,24 @@
 										</div>
 
 										<br> <br> <br> <br> <br> <br>
-										<div class="input-group" ng-show="IsVisible"
-											style="overflow-x: auto; max-height: 700px; max-width: 1400px;">
-											<table
-												class="table table-striped table-condensed table-hover">
+										<div class="input-group" ng-show="IsVisible">
+											<table id="tableApplicativo">
 												<thead>
 													<tr>
 														<th>ID Polarion</th>
 														<th>Titolo</th>
+														<th>Data Creazione</th>
+														<th>Data Ultimo Aggiornamento</th>
 														<th>Azioni</th>
-<!-- 														<th>Data Creazione</th> -->
-<!-- 														<th>Data Ultimo Aggiornamento</th> -->
 													</tr>
 												</thead>
-												<tbody ng-controller="infoReleaseFiltri">
-													<tr ng-repeat="num in range(rilasciApplicativo.length, 4)">
-														<td>{{rilasciApplicativo[num]}}</td>
-														<td>{{rilasciApplicativo[num+1]}}</td>
-														<td><a id="buttonIdPolarion" ng-show="rilasciApplicativo[num]" class="btn btn-success ng-binding" href="#!/infoReleaseProgetto/{{rilasciApplicativo[num]}}">Vai al dettaglio</a></td>
-<!-- 														<td>{{rilasciApplicativo[num+2]}}</td> -->
-<!-- 														<td>{{rilasciApplicativo[num+3]}}</td> -->
-													</tr>
-												</tbody>
+<!-- 												<tbody ng-controller="infoReleaseFiltri"> -->
+<!-- 													<tr ng-repeat="num in range(rilasciApplicativo.length, 4)"> -->
+<!-- 														<td>{{rilasciApplicativo[num]}}</td> -->
+<!-- 														<td>{{rilasciApplicativo[num+1]}}</td> -->
+<!-- 														<td><a id="buttonIdPolarion" ng-show="rilasciApplicativo[num]" class="btn btn-success ng-binding" href="#!/infoReleaseProgetto/{{rilasciApplicativo[num]}}">Vai al dettaglio</a></td> -->
+<!-- 													</tr> -->
+<!-- 												</tbody> -->
 											</table>
 
 
@@ -312,28 +308,26 @@
 											</span>
 										</div>
 										<br> <br> <br> <br> <br> <br>
-										<div class="input-group" ng-show="IsVisible3"
-											style="overflow-x: auto; max-height: 700px; max-width: 1400px;">
-											<table
-												class="table table-striped table-condensed table-hover">
+										<div class="input-group" ng-show="IsVisible3">
+											<table id="tableArea">
 												<thead>
 													<tr>
 														<th>ID Polarion</th>
 														<th>Titolo</th>
+														<th>Data Creazione</th>
+														<th>Data Ultimo Aggiornamento</th>
 														<th>Azioni</th>
-<!-- 														<th>Data Creazione</th> -->
-<!-- 														<th>Data Ultimo Aggiornamento</th> -->
 													</tr>
 												</thead>
-												<tbody ng-controller="infoReleaseFiltri">
-													<tr ng-repeat="num3 in range(rilasciPerAree.length, 4)">
-														<td>{{rilasciPerAree[num3]}}</td>
-														<td>{{rilasciPerAree[num3+1]}}</td>
-														<td><a id="buttonIdPolarion" ng-show="rilasciPerAree[num3]" class="btn btn-success ng-binding" href="#!/infoReleaseProgetto/{{rilasciPerAree[num3]}}">Vai al dettaglio</a></td>
-<!-- 														<td>{{rilasciPerAree[num3+2]}}</td> -->
-<!-- 														<td>{{rilasciPerAree[num3+3]}}</td> -->
-													</tr>
-												</tbody>
+<!-- 												<tbody ng-controller="infoReleaseFiltri"> -->
+<!-- 													<tr ng-repeat="num3 in range(rilasciPerAree.length, 4)"> -->
+<!-- 														<td>{{rilasciPerAree[num3]}}</td> -->
+<!-- 														<td>{{rilasciPerAree[num3+1]}}</td> -->
+<!-- 														<td><a id="buttonIdPolarion" ng-show="rilasciPerAree[num3]" class="btn btn-success ng-binding" href="#!/infoReleaseProgetto/{{rilasciPerAree[num3]}}">Vai al dettaglio</a></td> -->
+<!-- 														<td>{{rilasciPerAree[num3+2]}}</td> --> 
+<!--  														<td>{{rilasciPerAree[num3+3]}}</td> --> 
+<!-- 													</tr> -->
+<!-- 												</tbody> -->
 											</table>
 
 
@@ -367,33 +361,32 @@
 											type="hidden" value="{{rilasciApplicativolength}}">
 										<div class="input-group"
 											ng-show="IsVisible2 && rilasciApplicativolength != '0'"
-											style="overflow-x: auto; max-height: 700px;">
-											<table
-												class="table table-striped table-condensed table-hover">
+											>
+											<table id="tableContesto">
 												<thead>
 													<tr>
 														<th>ID Polarion</th>
 														<th>Titolo</th>
+														<th>Data Creazione</th>
+														<th>Data Ultimo Aggiornamento</th>
 														<th>Azioni</th>
-<!-- 														<th>Data Creazione</th> -->
-<!-- 														<th>Data Ultimo Aggiornamento</th> -->
 													</tr>
 												</thead>
-												<tbody ng-controller="infoReleaseFiltri">
-													<tr ng-repeat="num2 in range(rilasciContesto.length, 4)">
-														<td>{{rilasciContesto[num2]}}</td>
-														<td>{{rilasciContesto[num2+1]}}</td>
-														<td><a id="buttonIdPolarion" ng-show="rilasciContesto[num2]" class="btn btn-success ng-binding" href="#!/infoReleaseProgetto/{{rilasciContesto[num2]}}">Vai al dettaglio</a></td>
-<!-- 														<td>{{rilasciContesto[num2+2]}}</td> -->
-<!-- 														<td>{{rilasciContesto[num2+3]}}</td> -->
-													</tr>
-												</tbody>
+<!-- 												<tbody ng-controller="infoReleaseFiltri"> -->
+<!-- 													<tr ng-repeat="num2 in range(rilasciContesto.length, 4)"> -->
+<!-- 														<td>{{rilasciContesto[num2]}}</td> -->
+<!-- 														<td>{{rilasciContesto[num2+1]}}</td> -->
+<!-- 														<td><a id="buttonIdPolarion" ng-show="rilasciContesto[num2]" class="btn btn-success ng-binding" href="#!/infoReleaseProgetto/{{rilasciContesto[num2]}}">Vai al dettaglio</a></td> -->
+<!--  														<td>{{rilasciContesto[num2+2]}}</td> --> 
+<!-- 														<td>{{rilasciContesto[num2+3]}}</td> --> 
+<!-- 													</tr> -->
+<!-- 												</tbody> -->
 											</table>
 										</div>
-										<div ng-show="rilasciApplicativolength == '0'">
-											<h4>Non sono presenti rilasci per l'applicativo
-												selezionato.</h4>
-										</div>
+<!-- 										<div ng-show="rilasciApplicativolength == '0'"> -->
+<!-- 											<h4>Non sono presenti rilasci per l'applicativo -->
+<!-- 												selezionato.</h4> -->
+<!-- 										</div> -->
 									</div>
 								</div>
 							</div>
